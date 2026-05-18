@@ -1,0 +1,9 @@
+{% include helpers.liquid %}
+{% if widgets.footer and widgets.footer.size > 0 %}
+<div class="footer-widgets clear-fix">
+  {% for widget in widgets.footer %}
+    {% include widget.html widget=widget %}
+  {% endfor %}
+</div>
+{% endif %}
+

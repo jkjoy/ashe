@@ -1,0 +1,219 @@
+# Ashe 主题主设置文件。
+# 这里只保留 Jekyll 静态站里能够稳定实现的设置项。
+
+skins:
+  # 可选值：default / dark / box
+  select: default
+  # 是否显示导航栏里的暗色模式切换按钮。
+  dark_mode_switcher: true
+
+colors:
+  # 站点强调色。
+  content_accent: "#ca9b52"
+  # 内容区域背景色。
+  content_bg: "#ffffff"
+  # 页头背景色。
+  header_bg: "#ffffff"
+
+general:
+  # 左右侧栏的基础宽度，单位 px。
+  sidebar_width: 270
+  # 是否启用左右侧栏吸顶。
+  sidebar_sticky: true
+  # 首页文章布局：col1-rsidebar（卡片） / list-rsidebar（列表）
+  home_layout: col1-rsidebar
+  # 页头宽度：contained（内层居中） / boxed（外层包裹）
+  header_width: contained
+  # 首页轮播宽度。
+  slider_width: boxed
+  # 首页特色链接宽度。
+  links_width: boxed
+  # 常规内容宽度。
+  content_width: boxed
+  # 单篇文章宽度。
+  single_width: boxed
+  # 页脚宽度。
+  footer_width: contained
+
+top_bar:
+  # 是否显示顶部栏。
+  enabled: true
+
+header_image:
+  # 是否显示页头大图区域。
+  enabled: true
+  # 页头背景图。
+  image: /assets/images/ashe_bg.jpg
+  # 背景图缩放方式：cover / contain
+  bg_image_size: cover
+
+site_identity:
+  # 主 Logo，留空时显示站点标题文字。
+  logo: ""
+  # 主 Logo 最大宽度，单位 px。
+  logo_width: 500
+  # 是否显示站点标题与副标题。
+  show_text: true
+  # 使用图片 Logo 时，是否额外输出一个隐藏的 SEO 标题。
+  seo_hidden_title: false
+
+navigation:
+  # 是否显示主导航。
+  enabled: true
+  # 主导航对齐方式：left / center / right
+  align: center
+  # 是否显示搜索图标。
+  show_search: true
+  # 是否显示左侧抽屉侧栏按钮。
+  show_sidebar: true
+  # 移动端是否把顶部菜单合并进主菜单。
+  merge_mobile_menu: false
+  # 是否启用简洁头部（高度 70px）。
+  simple_header: false
+  # 导航栏迷你 Logo，留空则不显示。
+  mini_logo: ""
+  # 导航栏迷你 Logo 最大宽度，单位 px。
+  mini_logo_width: 70
+
+featured_slider:
+  # 是否启用首页轮播。
+  enabled: true
+  # 显示位置：both / front / blog
+  location: both
+  # 数据来源：posts / custom
+  source: posts
+  # 文章来源时的筛选方式：all / category
+  display: all
+  # 文章来源时的分类名；display 为 category 时生效。
+  category: ""
+  # 轮播条目数量。
+  amount: 3
+  # 是否只显示带封面图的文章。
+  exclude_without_image: false
+  # 是否显示左右切换箭头。
+  navigation: true
+  # 是否显示底部圆点。
+  pagination: true
+  # 自定义轮播条目，仅在 source 为 custom 时生效。
+  custom_items:
+    - image: /assets/images/image_5.jpg
+      title: Morning Rituals That Keep Ideas Flowing
+      text: Small habits, gentle pacing, and quiet attention can shape a much calmer writing rhythm.
+      link: /journal/morning-rituals/
+      button_text: read more
+      new_tab: false
+    - image: /assets/images/image_3.jpg
+      title: Notes From a Weekend Market
+      text: Textures, scent, and color can turn an ordinary errand into a visual diary worth keeping.
+      link: /lifestyle/weekend-market-notes/
+      button_text: read more
+      new_tab: false
+    - image: /assets/images/image_6.jpg
+      title: A Coastal Route for Slow Travel
+      text: The best parts of a trip are often the pauses between destinations, not the destinations alone.
+      link: /travel/coastal-route/
+      button_text: read more
+      new_tab: false
+
+featured_links:
+  # 是否启用首页三栏特色链接。
+  enabled: false
+  # 显示位置：both / front / blog
+  location: both
+  # 最多支持三项，和原主题保持一致。
+  items:
+    - title: Lifestyle
+      url: /archive/?category=Lifestyle
+      image: /assets/images/lifestyle.jpg
+    - title: Food
+      url: /archive/?category=Food
+      image: /assets/images/food.jpg
+    - title: Travel
+      url: /archive/?category=Travel
+      image: /assets/images/img8.jpg
+
+blog_page:
+  # 首页摘要模式：excerpt / content / none
+  post_description: excerpt
+  # 分页样式：default / numeric
+  pagination: numeric
+  # 是否显示分类。
+  show_categories: true
+  # 是否显示日期。
+  show_date: true
+  # 是否启用首字下沉。
+  show_dropcaps: false
+  # 是否显示作者。
+  show_author: true
+  # 以下为分享按钮开关。
+  show_share_facebook: false
+  show_share_twitter: false
+  show_share_pinterest: false
+  show_share_whatsapp: false
+  show_share_linkedin: false
+  show_share_reddit: false
+  show_share_tumblr: false
+  # 相关文章排序：related / latest / none
+  related_orderby: related
+
+single_page:
+  # 是否显示文章封面图。
+  show_featured_image: true
+  # 是否显示分类。
+  show_categories: true
+  # 是否显示日期。
+  show_date: true
+  # 是否显示作者。
+  show_author: true
+  # 是否显示作者简介块。
+  show_author_desc: true
+  # 相关文章排序：related / latest / none
+  related_orderby: related
+
+social_media:
+  # 社交链接是否在新标签页打开。
+  open_in_new_tab: true
+  items:
+    - icon: facebook
+      url: ""
+    - icon: x-twitter
+      url: ""
+    - icon: instagram
+      url: ""
+    - icon: pinterest
+      url: ""
+
+typography:
+  # Logo 字体，可直接填写 Google Fonts 的字体名。
+  logo_family: Open Sans
+  # 导航字体。
+  nav_family: Open Sans
+  # 导航是否斜体。
+  nav_italic: false
+  # 导航是否大写。
+  nav_uppercase: true
+
+footer:
+  # 支持 $year 与 $copy 两个占位符。
+  copyright: "$copy $year Ashe Theme"
+  # 是否显示返回顶部按钮。
+  show_scrolltop: true
+  # 页脚右下角信用信息，支持 HTML。
+  credit: 'Ashe Theme by <a href="https://wp-royal-themes.com/">WP Royal.</a>'
+
+preloader:
+  # 是否启用页面预加载动画。
+  enabled: false
+
+responsive:
+  # 移动端是否显示首页轮播。
+  featured_slider: true
+  # 移动端是否显示特色链接。
+  featured_links: false
+  # 移动端是否显示相关文章。
+  related_posts: false
+  # 移动端菜单按钮样式：chevron-down / text
+  menu_icon: chevron-down
+  # 当 menu_icon 为 text 时显示的文字。
+  mobile_icon_text: Menu
+

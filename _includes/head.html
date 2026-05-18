@@ -1,0 +1,21 @@
+{% include helpers.liquid %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | escape_once }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/fontawesome.min.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/fontello.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/slick.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/perfect-scrollbar.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/responsive.css' | relative_url }}">
+  {% if page.rtl %}
+  <link rel="stylesheet" href="{{ '/rtl.css' | relative_url }}">
+  {% endif %}
+  {% include dynamic-styles.html %}
+</head>
+

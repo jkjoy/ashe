@@ -1,0 +1,27 @@
+{% case include.icon %}
+{% when 'facebook' %}fa-brands fa-facebook-f
+{% when 'facebook-official' %}fa-brands fa-square-facebook
+{% when 'facebook-square' %}fa-brands fa-facebook
+{% when 'linkedin' %}fa-brands fa-linkedin-in
+{% when 'linkedin-square' %}fa-brands fa-linkedin
+{% when 'film' %}fa-solid fa-film
+{% when 'youtube-play' %}fa-brands fa-youtube
+{% when 'youtube-square' %}fa-brands fa-square-youtube
+{% when 'info' %}fa-solid fa-info
+{% when 'info-circle' %}fa-solid fa-circle-info
+{% when 'rss' %}fa-solid fa-rss
+{% when 'rss-square' %}fa-solid fa-square-rss
+{% when 'heart' %}fa-solid fa-heart
+{% when 'heart-o' %}fa-regular fa-heart
+{% when 'gamepad' %}fa-solid fa-gamepad
+{% when 'map-marker' %}fa-solid fa-location-dot
+{% when 'envelope' %}fa-solid fa-envelope
+{% when 'envelope-o' %}fa-regular fa-envelope
+{% when 'envelope-square' %}fa-solid fa-square-envelope
+{% when 'snapchat-square' %}fa-brands fa-square-snapchat
+{% when 'shopping-cart' %}fa-solid fa-cart-shopping
+{% when 'tiktok' %}fa-brands fa-tiktok
+{% when 'credit-card' %}fa-regular fa-credit-card
+{% else %}fa-brands fa-{{ include.icon }}
+{% endcase %}
+

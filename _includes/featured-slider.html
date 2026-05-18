@@ -1,0 +1,93 @@
+{% include helpers.liquid %}
+{% assign show_slider = false %}
+{% if ashe.featured_slider.enabled %}
+  {% if include.context == 'home' and ashe.featured_slider.location != 'front' %}
+    {% assign show_slider = true %}
+  {% endif %}
+  {% if include.context == 'front' and ashe.featured_slider.location != 'blog' %}
+    {% assign show_slider = true %}
+  {% endif %}
+{% endif %}
+{% if show_slider %}
+{% assign slider_data = '"slidesToShow":1, "fade":true' %}
+{% unless ashe.featured_slider.navigation %}
+  {% assign slider_data = slider_data | append: ', "arrows":false' %}
+{% endunless %}
+{% if ashe.featured_slider.pagination %}
+  {% assign slider_data = slider_data | append: ', "dots":true' %}
+{% endif %}
+<div class="featured-slider-area{% if ashe.general.slider_width == 'boxed' %} boxed-wrapper{% endif %}">
+  <div id="featured-slider" class="{% if ashe.general.slider_width == 'boxed' %}boxed-wrapper{% endif %}" data-slick='{ {{ slider_data }} }'>
+    {% if ashe.featured_slider.source == 'custom' %}
+      {% for item in ashe.featured_slider.custom_items limit: ashe.featured_slider.amount %}
+      <div class="slider-item">
+        <div class="slider-item-bg" style="background-image:url({{ item.image | relative_url }});"></div>
+        <div class="cv-container image-overlay">
+          <div class="cv-outer">
+            <div class="cv-inner">
+              <div class="slider-info">
+                {% if item.title and item.title != '' %}
+                  {% if item.link and item.link != '' %}
+                  <h2 class="slider-title"><a href="{{ item.link | relative_url }}"{% if item.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.title }}</a></h2>
+                  {% else %}
+                  <h2 class="slider-title">{{ item.title }}</h2>
+                  {% endif %}
+                {% endif %}
+                {% if item.text and item.text != '' %}
+                <div class="slider-content">{{ item.text }}</div>
+                {% endif %}
+                {% if item.button_text and item.button_text != '' %}
+                <div class="slider-read-more">
+                  <a href="{{ item.link | relative_url }}"{% if item.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.button_text }}</a>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      {% assign slider_count = 0 %}
+      {% for post in site.posts %}
+      {% assign include_post = true %}
+      {% if ashe.featured_slider.display == 'category' and ashe.featured_slider.category != '' %}
+        {% unless post.categories contains ashe.featured_slider.category %}
+          {% assign include_post = false %}
+        {% endunless %}
+      {% endif %}
+      {% if ashe.featured_slider.exclude_without_image and post.image == nil %}
+        {% assign include_post = false %}
+      {% endif %}
+      {% if include_post and slider_count < ashe.featured_slider.amount %}
+      {% assign slider_count = slider_count | plus: 1 %}
+      <div class="slider-item">
+        <div class="slider-item-bg" style="background-image:url({{ post.image | default: '/assets/images/image_5.jpg' | relative_url }});"></div>
+        <div class="cv-container image-overlay">
+          <div class="cv-outer">
+            <div class="cv-inner">
+              <div class="slider-info">
+                {% if post.categories and post.categories.size > 0 %}
+                <div class="slider-categories">
+                  {% for category in post.categories %}
+                  <a href="{{ '/archive/' | relative_url }}?category={{ category | uri_escape }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+                <h2 class="slider-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+                <div class="slider-content">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
+                <div class="slider-read-more">
+                  <a href="{{ post.url | relative_url }}">read more</a>
+                </div>
+                <div class="slider-date">{{ post.date | date: '%B %-d, %Y' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endif %}

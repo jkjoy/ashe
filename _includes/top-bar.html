@@ -1,0 +1,49 @@
+{% include helpers.liquid %}
+{% if ashe.top_bar.enabled %}
+<div id="top-bar" class="clear-fix">
+  <div{% if ashe.general.header_width == 'contained' %} class="boxed-wrapper"{% endif %}>
+    {% include social-icons.html class="top-bar-socials" %}
+    {% assign top_menu = nav.top %}
+    {% if top_menu and top_menu.size > 0 %}
+    <nav class="top-menu-container">
+      <ul id="top-menu">
+        {% for item in top_menu %}
+        <li class="{% if item.children %}menu-item-has-children{% endif %}">
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.children %}
+          <ul class="sub-menu">
+            {% for child in item.children %}
+            <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+    {% if ashe.navigation.enabled != true and top_menu and top_menu.size > 0 %}
+    <span class="mobile-menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </span>
+    <nav class="mobile-menu-container">
+      <ul id="mobile-menu">
+        {% for item in top_menu %}
+        <li class="{% if item.children %}menu-item-has-children{% endif %}">
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% if item.children %}
+          <ul class="sub-menu">
+            {% for child in item.children %}
+            <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+

@@ -1,0 +1,36 @@
+# 导航配置文件。
+# 支持 children 字段生成下拉菜单。
+
+top:
+  - title: About
+    url: /about/
+  - title: Search
+    url: /search/
+  - title: Archive
+    url: /archive/
+
+main:
+  - title: Home
+    url: /
+  - title: Travel
+    url: /archive/?category=Travel
+  - title: Lifestyle
+    url: /archive/?category=Lifestyle
+  - title: Food
+    url: /archive/?category=Food
+  - title: Journal
+    url: /archive/?category=Journal
+    children:
+      - title: Slow Living
+        url: /archive/?tag=slow-living
+      - title: Work Notes
+        url: /archive/?tag=work-notes
+
+footer:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Archive
+    url: /archive/
+

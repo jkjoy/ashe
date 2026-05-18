@@ -1,0 +1,81 @@
+{% assign widget = include.widget %}
+<section class="ashe-widget widget_{{ widget.type }}">
+  {% if widget.title %}
+  <div class="widget-title">
+    <h2>{{ widget.title }}</h2>
+  </div>
+  {% endif %}
+
+  {% case widget.type %}
+  {% when 'search' %}
+    <div class="widget_search">
+      {% include search-form.html %}
+    </div>
+  {% when 'about' %}
+    {% if widget.image %}<img src="{{ widget.image | relative_url }}" alt="{{ widget.title }}">{% endif %}
+    <p>{{ widget.text }}</p>
+  {% when 'recent_posts' %}
+    <div class="rpwwt-widget">
+      <ul>
+        {% for post in site.posts limit: widget.limit %}
+        <li>
+          <a class="rpwwt-post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="rpwwt-post-date">{{ post.date | date: '%B %-d, %Y' }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% when 'categories' %}
+    <div class="widget_categories">
+      <ul>
+        {% assign category_csv = '' %}
+        {% for post in site.posts %}
+          {% for category in post.categories %}
+            {% assign token = '|' | append: category | append: '|' %}
+            {% unless category_csv contains token %}
+              {% assign category_csv = category_csv | append: token %}
+            {% endunless %}
+          {% endfor %}
+        {% endfor %}
+        {% assign category_names = category_csv | remove_first: '|' | split: '|' %}
+        {% for category in category_names %}
+        {% if category != '' %}
+        <li><a href="{{ '/archive/' | relative_url }}?category={{ category | uri_escape }}">{{ category }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% when 'tags' %}
+    <div class="tagcloud">
+      {% assign tag_csv = '' %}
+      {% for post in site.posts %}
+        {% for tag in post.tags %}
+          {% assign token = '|' | append: tag | append: '|' %}
+          {% unless tag_csv contains token %}
+            {% assign tag_csv = tag_csv | append: token %}
+          {% endunless %}
+        {% endfor %}
+      {% endfor %}
+      {% assign tags = tag_csv | remove_first: '|' | split: '|' %}
+      {% for tag in tags %}
+      {% if tag != '' %}
+      <a href="{{ '/archive/' | relative_url }}?tag={{ tag | uri_escape }}">{{ tag }}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  {% when 'text' %}
+    <p>{{ widget.content }}</p>
+  {% when 'social' %}
+    {% include social-icons.html class="social-icons footer-socials" %}
+  {% when 'links' %}
+    <nav class="widget_nav_menu">
+      <ul>
+        {% for item in widget.items %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% else %}
+    <p>{{ widget.content }}</p>
+  {% endcase %}
+</section>

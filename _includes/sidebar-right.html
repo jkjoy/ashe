@@ -1,0 +1,11 @@
+{% include helpers.liquid %}
+{% if widgets.sidebar_right and widgets.sidebar_right.size > 0 %}
+<div class="sidebar-right-wrap">
+  <aside class="sidebar-right">
+    {% for widget in widgets.sidebar_right %}
+      {% include widget.html widget=widget %}
+    {% endfor %}
+  </aside>
+</div>
+{% endif %}
+

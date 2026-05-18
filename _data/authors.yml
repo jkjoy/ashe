@@ -1,0 +1,11 @@
+# 作者资料文件。
+# 文章 front matter 的 author 字段会以这里的键名为准。
+
+sun:
+  name: Sun
+  bio: >-
+    Writes about slow travel, quiet routines, seasonal food, and the visual texture
+    of everyday life.
+  avatar: /assets/images/img1.jpg
+  website: ""
+

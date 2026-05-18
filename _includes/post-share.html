@@ -1,0 +1,43 @@
+{% include helpers.liquid %}
+{% assign p = include.post %}
+{% assign absolute_url = p.url | absolute_url %}
+{% assign title = p.title | uri_escape %}
+{% assign excerpt = p.excerpt | strip_html | strip_newlines | uri_escape %}
+<div class="post-share">
+  {% if ashe.blog_page.show_share_facebook %}
+  <a class="facebook-share" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url | uri_escape }}">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+  {% endif %}
+  {% if ashe.blog_page.show_share_twitter %}
+  <a class="twitter-share" target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?url={{ absolute_url | uri_escape }}">
+    <i class="fa-brands fa-x-twitter"></i>
+  </a>
+  {% endif %}
+  {% if ashe.blog_page.show_share_pinterest %}
+  <a class="pinterest-share" target="_blank" rel="noopener noreferrer" href="https://pinterest.com/pin/create/button/?url={{ absolute_url | uri_escape }}&amp;media={{ p.image | absolute_url | uri_escape }}&amp;description={{ p.title | uri_escape }}">
+    <i class="fa-brands fa-pinterest"></i>
+  </a>
+  {% endif %}
+  {% if ashe.blog_page.show_share_whatsapp %}
+  <a class="whatsapp-share" target="_blank" rel="noopener noreferrer" href="https://api.whatsapp.com/send?text=*{{ p.title | uri_escape }}*%0A{{ excerpt }}%0A{{ absolute_url | uri_escape }}">
+    <i class="fa-brands fa-square-whatsapp"></i>
+  </a>
+  {% endif %}
+  {% if ashe.blog_page.show_share_linkedin %}
+  <a class="linkedin-share" target="_blank" rel="noopener noreferrer" href="http://www.linkedin.com/shareArticle?url={{ absolute_url | uri_escape }}&amp;title={{ title }}">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+  {% endif %}
+  {% if ashe.blog_page.show_share_tumblr %}
+  <a class="tumblr-share" target="_blank" rel="noopener noreferrer" href="http://www.tumblr.com/share/link?url={{ absolute_url | uri_escape }}&amp;name={{ title }}&amp;description={{ excerpt }}">
+    <i class="fa-brands fa-tumblr"></i>
+  </a>
+  {% endif %}
+  {% if ashe.blog_page.show_share_reddit %}
+  <a class="reddit-share" target="_blank" rel="noopener noreferrer" href="http://reddit.com/submit?url={{ absolute_url | uri_escape }}&amp;title={{ title }}">
+    <i class="fa-brands fa-reddit"></i>
+  </a>
+  {% endif %}
+</div>
+

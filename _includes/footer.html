@@ -1,0 +1,37 @@
+{% include helpers.liquid %}
+</div>
+<footer id="page-footer" class="{% if ashe.general.footer_width == 'boxed' %}boxed-wrapper {% endif %}clear-fix">
+  {% if ashe.footer.show_scrolltop %}
+  <span class="scrolltop">
+    <i class="fa-solid fa-angle-up"></i>
+  </span>
+  {% endif %}
+  <div class="page-footer-inner {% if ashe.general.footer_width == 'contained' %}boxed-wrapper{% endif %}">
+    {% include footer-widgets.html %}
+    <div class="footer-copyright">
+      {% assign copyright_year = site.time | date: '%Y' %}
+      {% assign copyright_text = ashe.footer.copyright | replace: '$year', copyright_year %}
+      {% assign copyright_text = copyright_text | replace: '$copy', '&copy;' %}
+      <div class="copyright-info">
+        {{ copyright_text }}
+      </div>
+      {% if nav.footer and nav.footer.size > 0 %}
+      <nav class="footer-menu-container">
+        <ul id="footer-menu">
+          {% for item in nav.footer %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      <div class="credit">{{ ashe.footer.credit }}</div>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ '/assets/js/custom-plugins.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/custom-scripts.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jekyll-ashe.js' | relative_url }}"></script>
+</body>
+</html>

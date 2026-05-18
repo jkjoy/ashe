@@ -1,0 +1,31 @@
+{% include helpers.liquid %}
+{% assign show_links = false %}
+{% if ashe.featured_links.enabled %}
+  {% if include.context == 'home' and ashe.featured_links.location != 'front' %}
+    {% assign show_links = true %}
+  {% endif %}
+  {% if include.context == 'front' and ashe.featured_links.location != 'blog' %}
+    {% assign show_links = true %}
+  {% endif %}
+{% endif %}
+{% if show_links %}
+<div id="featured-links" class="{% if ashe.general.links_width == 'boxed' %} boxed-wrapper{% endif %} clear-fix">
+  {% for item in ashe.featured_links.items %}
+    {% if item.image and item.image != '' %}
+    <div class="featured-link">
+      <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
+      <a href="{{ item.url | relative_url }}">
+        <div class="cv-outer">
+          <div class="cv-inner">
+            {% if item.title and item.title != '' %}
+            <h6>{{ item.title }}</h6>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+

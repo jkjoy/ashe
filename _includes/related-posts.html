@@ -1,0 +1,37 @@
+{% include helpers.liquid %}
+{% assign orderby = include.orderby %}
+{% if orderby != 'none' %}
+  {% assign source_post = include.post | default: page %}
+  {% assign current_categories = source_post.categories %}
+  {% assign first_category = current_categories | first %}
+  {% assign related_count = 0 %}
+  {% capture related_markup %}
+    {% for post in site.posts %}
+      {% assign include_related = false %}
+      {% if orderby == 'latest' %}
+        {% if post.url != source_post.url and post.image %}
+          {% assign include_related = true %}
+        {% endif %}
+      {% else %}
+        {% if post.url != source_post.url and post.image and first_category and post.categories contains first_category %}
+          {% assign include_related = true %}
+        {% endif %}
+      {% endif %}
+      {% if include_related and related_count < 3 %}
+        {% assign related_count = related_count | plus: 1 %}
+        <section>
+          <a href="{{ post.url | relative_url }}"><img src="{{ post.image | relative_url }}" alt="{{ post.title }}"></a>
+          <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+          <span class="related-post-date">{{ post.date | date: '%B %-d, %Y' }}</span>
+        </section>
+      {% endif %}
+    {% endfor %}
+  {% endcapture %}
+  {% if related_count > 0 %}
+  <div class="related-posts">
+    <h3>You May Also Like</h3>
+    {{ related_markup }}
+    <div class="clear-fix"></div>
+  </div>
+  {% endif %}
+{% endif %}

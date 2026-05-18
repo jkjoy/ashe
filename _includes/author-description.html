@@ -1,0 +1,13 @@
+{% include helpers.liquid %}
+{% assign author_key = page.author | default: site.author_default %}
+{% assign author = authors[author_key] %}
+{% if author and author.bio and author.bio != '' %}
+<div class="author-description">
+  <a class="author-avatar" href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">
+    <img src="{{ author.avatar | relative_url }}" alt="{{ author.name }}" width="90" height="90">
+  </a>
+  <h4><a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a></h4>
+  <p>{{ author.bio }}</p>
+</div>
+{% endif %}
+

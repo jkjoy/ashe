@@ -1,0 +1,16 @@
+{% include helpers.liquid %}
+{% assign wrapper_class = include.class | default: '' %}
+{% assign target = '_self' %}
+{% if ashe.social_media.open_in_new_tab %}
+  {% assign target = '_blank' %}
+{% endif %}
+<div class="{{ wrapper_class }}">
+  {% for item in ashe.social_media.items %}
+    {% if item.url and item.url != '' %}
+    <a href="{{ item.url }}" target="{{ target }}" rel="{% if target == '_blank' %}noopener noreferrer{% endif %}">
+      <i class="{% include social-icon-class.html icon=item.icon %}"></i>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>
+

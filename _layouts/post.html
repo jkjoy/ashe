@@ -1,0 +1,68 @@
+---
+layout: default
+body_class: single single-post
+---
+{% include helpers.liquid %}
+{% assign left_count = widgets.sidebar_left | size %}
+{% assign right_count = widgets.sidebar_right | size %}
+{% assign sidebars = 0 %}
+{% if left_count > 0 %}{% assign sidebars = sidebars | plus: 1 %}{% endif %}
+{% if right_count > 0 %}{% assign sidebars = sidebars | plus: 1 %}{% endif %}
+<div class="main-content clear-fix{% if ashe.general.single_width == 'boxed' %} boxed-wrapper{% endif %}" data-sidebar-sticky="{% if ashe.general.sidebar_sticky %}1{% else %}0{% endif %}">
+  {% include sidebar-left.html %}
+  <div class="main-container {% if sidebars == 2 %}has-both-sidebars{% elsif sidebars == 1 %}has-one-sidebar{% else %}has-no-sidebars{% endif %}">
+    <article id="post-{{ page.slug }}" class="post{% if ashe.blog_page.show_dropcaps %} ashe-dropcaps{% endif %}">
+      {% if ashe.single_page.show_featured_image and page.image %}
+      <div class="post-media">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </div>
+      {% endif %}
+      <header class="post-header">
+        {% if ashe.single_page.show_categories and page.categories and page.categories.size > 0 %}
+        <div class="post-categories">
+          {% for category in page.categories %}
+          <a href="{{ '/archive/' | relative_url }}?category={{ category | uri_escape }}">{{ category }}</a>{% unless forloop.last %},&nbsp;&nbsp;{% endunless %}
+          {% endfor %}
+        </div>
+        {% endif %}
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if ashe.single_page.show_date %}
+        <div class="post-meta clear-fix">
+          <span class="post-date">{{ page.date | date: '%B %-d, %Y' }}</span>
+        </div>
+        {% endif %}
+      </header>
+      <div class="post-content">
+        {{ content }}
+      </div>
+      <footer class="post-footer">
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+          <a href="{{ '/archive/' | relative_url }}?tag={{ tag | uri_escape }}">{{ tag }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if ashe.single_page.show_author %}
+        {% assign author_key = page.author | default: site.author_default %}
+        {% assign author = authors[author_key] %}
+        <span class="post-author">By&nbsp;<a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a></span>
+        {% endif %}
+        {% assign share_enabled = false %}
+        {% if ashe.blog_page.show_share_facebook or ashe.blog_page.show_share_twitter or ashe.blog_page.show_share_pinterest or ashe.blog_page.show_share_whatsapp or ashe.blog_page.show_share_linkedin or ashe.blog_page.show_share_reddit or ashe.blog_page.show_share_tumblr %}
+          {% assign share_enabled = true %}
+        {% endif %}
+        {% if share_enabled %}
+          {% include post-share.html post=page %}
+        {% endif %}
+      </footer>
+    </article>
+    {% if ashe.single_page.show_author_desc %}
+      {% include author-description.html %}
+    {% endif %}
+    {% include single-navigation.html %}
+    {% include related-posts.html orderby=ashe.single_page.related_orderby %}
+    {% include comments-area.html %}
+  </div>
+  {% include sidebar-right.html %}
+</div>

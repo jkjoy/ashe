@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}" class="{% if page.rtl %}rtl{% endif %}">
+{% include head.html %}
+{% include helpers.liquid %}
+<body class="{{ page.body_class }} {% if ashe.skins.select == 'box' %}ashe-boxed-style{% endif %} {% if ashe.site_identity.show_text %}title-tagline-shown{% else %}title-tagline-hidden{% endif %}">
+  {% include preloader.html %}
+  <div id="page-wrap">
+    <div id="page-header" {% if ashe.general.header_width == 'boxed' %}class="boxed-wrapper"{% endif %}>
+      {% include top-bar.html %}
+      {% include page-header.html %}
+      {% include main-navigation.html %}
+    </div>
+    <div class="page-content">
+      {% if page.feature_context == 'front' %}
+        {% include featured-slider.html context='front' %}
+        {% include featured-links.html context='front' %}
+      {% endif %}
+      {% include sidebar-alt.html %}
+      {{ content }}
+{% include footer.html %}

@@ -1,0 +1,16 @@
+{% include helpers.liquid %}
+{% if ashe.navigation.show_sidebar and ashe.navigation.enabled %}
+<div class="sidebar-alt-wrap">
+  <div class="sidebar-alt-close image-overlay"></div>
+  <aside class="sidebar-alt">
+    <div class="sidebar-alt-close-btn">
+      <span></span>
+      <span></span>
+    </div>
+    {% for widget in widgets.sidebar_alt %}
+      {% include widget.html widget=widget %}
+    {% endfor %}
+  </aside>
+</div>
+{% endif %}
+

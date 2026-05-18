@@ -1,0 +1,53 @@
+# 侧栏与页脚小组件配置。
+# type 字段决定组件渲染方式；未实现的 WordPress 专属小组件没有迁移。
+
+sidebar_left: []
+
+sidebar_right:
+  - type: search
+    title: Search
+  - type: about
+    title: About Me
+    image: /assets/images/img2.jpg
+    text: >-
+      A quiet corner for notes on travel, meals, work rhythms, and the small details
+      that make ordinary days feel memorable.
+  - type: recent_posts
+    title: Recent Posts
+    limit: 4
+  - type: categories
+    title: Categories
+  - type: tags
+    title: Tags
+
+sidebar_alt:
+  - type: text
+    title: Welcome
+    content: >-
+      This off-canvas area replaces the original WordPress “Sidebar Alt”.
+      You can place introduction text, links, or any other simple content here.
+  - type: social
+    title: Follow Me
+  - type: recent_posts
+    title: Latest Notes
+    limit: 3
+
+footer:
+  - type: text
+    title: About Ashe
+    content: >-
+      A Jekyll port that keeps the original Ashe presentation style while moving
+      manageable settings into flat files.
+  - type: recent_posts
+    title: Recent Posts
+    limit: 3
+  - type: links
+    title: Quick Links
+    items:
+      - title: Search
+        url: /search/
+      - title: Archive
+        url: /archive/
+      - title: About
+        url: /about/
+

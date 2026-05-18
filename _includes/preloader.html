@@ -1,0 +1,11 @@
+{% include helpers.liquid %}
+{% if ashe.preloader.enabled %}
+<div class="ashe-preloader-wrap">
+  <div class="cssload-spinner">
+    {% for i in (0..15) %}
+    <div class="cssload-cube cssload-cube{{ i }}"></div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+

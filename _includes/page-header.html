@@ -1,0 +1,28 @@
+{% include helpers.liquid %}
+{% if ashe.header_image.enabled %}
+<div class="entry-header">
+  <div class="cv-outer">
+    <div class="cv-inner">
+      <div class="header-logo">
+        {% if ashe.site_identity.logo and ashe.site_identity.logo != '' %}
+        <a href="{{ '/' | relative_url }}" class="logo-img" title="{{ site.title }}">
+          <img src="{{ ashe.site_identity.logo | relative_url }}" alt="{{ site.title }}">
+        </a>
+        {% if ashe.site_identity.seo_hidden_title and page.url == '/' %}
+        <h1 style="display:none;">{{ site.title }}</h1>
+        {% endif %}
+        {% else %}
+          {% if page.url == '/' %}
+          <h1>
+            <a href="{{ '/' | relative_url }}" class="header-logo-a">{{ site.title }}</a>
+          </h1>
+          {% else %}
+          <a href="{{ '/' | relative_url }}" class="header-logo-a">{{ site.title }}</a>
+          {% endif %}
+        {% endif %}
+        <p class="site-description">{{ site.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

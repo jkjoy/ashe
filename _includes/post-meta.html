@@ -1,0 +1,25 @@
+{% include helpers.liquid %}
+{% assign settings = include.settings %}
+{% assign author_key = include.post.author | default: site.author_default %}
+{% assign author = authors[author_key] %}
+{% if settings.show_date or settings.show_author %}
+<div class="post-meta clear-fix">
+  {% if settings.show_author %}
+  <span class="post-author">
+    {% if include.avatar and author and author.avatar %}
+    <a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">
+      <img src="{{ author.avatar | relative_url }}" alt="{{ author.name }}" width="30" height="30">
+    </a>
+    {% endif %}
+    {% if author %}
+    <a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a>
+    {% endif %}
+  </span>
+  {% endif %}
+  {% if settings.show_date %}
+    {% if settings.show_author %}<span class="meta-sep">/</span>{% endif %}
+    <span class="post-date">{{ include.post.date | date: '%B %-d, %Y' }}</span>
+  {% endif %}
+</div>
+{% endif %}
+

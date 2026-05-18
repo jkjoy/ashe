@@ -1,0 +1,15 @@
+{% assign prev_post = page.previous %}
+{% assign next_post = page.next %}
+{% if prev_post %}
+<a href="{{ prev_post.url | relative_url }}" title="{{ prev_post.title }}" class="single-navigation previous-post">
+  {% if prev_post.image %}<img src="{{ prev_post.image | relative_url }}" alt="{{ prev_post.title }}">{% endif %}
+  <i class="fa-solid fa-angle-right"></i>
+</a>
+{% endif %}
+{% if next_post %}
+<a href="{{ next_post.url | relative_url }}" title="{{ next_post.title }}" class="single-navigation next-post">
+  {% if next_post.image %}<img src="{{ next_post.image | relative_url }}" alt="{{ next_post.title }}">{% endif %}
+  <i class="fa-solid fa-angle-left"></i>
+</a>
+{% endif %}
+

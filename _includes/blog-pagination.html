@@ -1,0 +1,54 @@
+{% include helpers.liquid %}
+{% if paginator and paginator.total_pages > 1 %}
+{% assign next_page_path = site.paginate_path | replace: ':num', paginator.next_page | relative_url %}
+<nav class="blog-pagination clear-fix {{ ashe.blog_page.pagination }}">
+  {% if ashe.blog_page.pagination == 'numeric' %}
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        {% assign previous_page_path = '/' | relative_url %}
+      {% else %}
+        {% assign previous_page_raw = site.paginate_path | replace: ':num', paginator.previous_page %}
+        {% assign previous_page_path = previous_page_raw | relative_url %}
+      {% endif %}
+    <a href="{{ previous_page_path }}" class="numeric-prev-page"><i class="fa-solid fa-arrow-left-long"></i></a>
+    {% endif %}
+    {% for page_number in (1..paginator.total_pages) %}
+      {% if page_number == paginator.page %}
+      <span class="numeric-current-page">{{ page_number }}</span>
+      {% else %}
+        {% if page_number == 1 %}
+          {% assign page_path = '/' | relative_url %}
+        {% else %}
+          {% assign page_raw = site.paginate_path | replace: ':num', page_number %}
+          {% assign page_path = page_raw | relative_url %}
+        {% endif %}
+      <a href="{{ page_path }}">{{ page_number }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      {% assign next_page_raw = site.paginate_path | replace: ':num', paginator.next_page %}
+      {% assign next_page_path = next_page_raw | relative_url %}
+    <a href="{{ next_page_path }}" class="numeric-next-page"><i class="fa-solid fa-arrow-right-long"></i></a>
+    {% endif %}
+  {% else %}
+    {% if paginator.next_page %}
+      {% assign older_page_raw = site.paginate_path | replace: ':num', paginator.next_page %}
+      {% assign older_page_path = older_page_raw | relative_url %}
+    <div class="previous-page">
+      <a href="{{ older_page_path }}"><i class="fa-solid fa-arrow-left-long"></i>&nbsp;Older Posts</a>
+    </div>
+    {% endif %}
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        {% assign newer_page_path = '/' | relative_url %}
+      {% else %}
+        {% assign newer_page_raw = site.paginate_path | replace: ':num', paginator.previous_page %}
+        {% assign newer_page_path = newer_page_raw | relative_url %}
+      {% endif %}
+    <div class="next-page">
+      <a href="{{ newer_page_path }}">Newer Posts&nbsp;<i class="fa-solid fa-arrow-right-long"></i></a>
+    </div>
+    {% endif %}
+  {% endif %}
+</nav>
+{% endif %}

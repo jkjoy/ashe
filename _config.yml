@@ -1,0 +1,42 @@
+# 站点基础信息。
+title: Ashe
+description: A Jekyll port of the Ashe blog style.
+lang: zh-CN
+timezone: Asia/Shanghai
+url: "https://example.com"
+baseurl: ""
+
+# 默认作者键名，会在 _data/authors.yml 中查找对应信息。
+author_default: sun
+
+# 文章永久链接结构。
+permalink: /:categories/:title/
+
+# 首页分页设置。
+paginate: 4
+paginate_path: "/page/:num/"
+
+# Markdown 渲染器。
+markdown: kramdown
+
+# 需要启用的 Jekyll 插件。
+plugins:
+  - jekyll-paginate
+
+# 默认布局与默认作者。
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: sun
+
+# 构建时忽略的文件。
+exclude:
+  - README.md
+

@@ -1,0 +1,81 @@
+{% include helpers.liquid %}
+{% assign post = include.post %}
+{% assign is_list = false %}
+{% if include.list_mode contains 'list' %}
+  {% assign is_list = true %}
+{% endif %}
+{% assign share_enabled = false %}
+{% if ashe.blog_page.show_share_facebook or ashe.blog_page.show_share_twitter or ashe.blog_page.show_share_pinterest or ashe.blog_page.show_share_whatsapp or ashe.blog_page.show_share_linkedin or ashe.blog_page.show_share_reddit or ashe.blog_page.show_share_tumblr %}
+  {% assign share_enabled = true %}
+{% endif %}
+{% assign author_key = post.author | default: site.author_default %}
+{% assign author = authors[author_key] %}
+{% assign excerpt_words = 110 %}
+{% if is_list %}
+  {% assign excerpt_words = 33 %}
+{% endif %}
+<article id="post-{{ post.slug }}" class="blog-post clear-fix{% if ashe.blog_page.show_dropcaps %} ashe-dropcaps{% endif %}{% if post.image %} has-post-thumbnail{% endif %}" data-categories="{{ post.categories | join: ',' | downcase }}" data-tags="{{ post.tags | join: ',' | downcase }}" data-author="{{ author_key | downcase }}" data-search="{{ post.title | append: ' ' | append: post.excerpt | append: ' ' | append: post.content | append: ' ' | append: post.categories | append: ' ' | append: post.tags | strip_html | strip_newlines | escape }}">
+  <div class="post-media">
+    <a href="{{ post.url | relative_url }}"></a>
+    {% if post.image %}
+    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+    {% else %}
+    <img src="{{ '/assets/images/image_1.jpg' | relative_url }}" alt="{{ post.title }}">
+    {% endif %}
+  </div>
+  {% if is_list %}<div class="post-content-wrap">{% endif %}
+    <header class="post-header">
+      {% if ashe.blog_page.show_categories and post.categories and post.categories.size > 0 %}
+      <div class="post-categories">
+        {% for category in post.categories %}
+        <a href="{{ '/archive/' | relative_url }}?category={{ category | uri_escape }}">{{ category }}</a>{% unless forloop.last %},&nbsp;&nbsp;{% endunless %}
+        {% endfor %}
+      </div>
+      {% endif %}
+      <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <div class="post-meta clear-fix">
+        {% if is_list and ashe.blog_page.show_author and author %}
+        <span class="post-author"><a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a></span>
+        {% endif %}
+        {% if ashe.blog_page.show_date %}
+          {% if is_list and ashe.blog_page.show_author and author %}
+          <span class="meta-sep">/</span>
+          {% endif %}
+          <span class="post-date">{{ post.date | date: '%B %-d, %Y' }}</span>
+        {% endif %}
+      </div>
+    </header>
+
+    {% if ashe.blog_page.post_description != 'none' %}
+    <div class="post-content">
+      {% if ashe.blog_page.post_description == 'content' %}
+        {{ post.content }}
+      {% else %}
+        <p>{{ post.excerpt | strip_html | truncatewords: excerpt_words }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="read-more">
+      <a href="{{ post.url | relative_url }}">read more</a>
+    </div>
+
+    <footer class="post-footer">
+      {% if ashe.blog_page.show_author and is_list != true %}
+      <span class="post-author">
+        {% if author and author.avatar %}
+        <a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}"><img src="{{ author.avatar | relative_url }}" alt="{{ author.name }}" width="30" height="30"></a>
+        {% endif %}
+        {% if author %}<a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a>{% endif %}
+      </span>
+      {% endif %}
+      {% if share_enabled %}
+        {% include post-share.html post=post %}
+      {% endif %}
+    </footer>
+
+    {% if is_list != true and ashe.blog_page.related_orderby != 'none' %}
+      {% include related-posts.html orderby=ashe.blog_page.related_orderby post=post %}
+    {% endif %}
+  {% if is_list %}</div>{% endif %}
+</article>
