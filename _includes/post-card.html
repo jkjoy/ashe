@@ -14,7 +14,7 @@
 {% if is_list %}
   {% assign excerpt_words = 33 %}
 {% endif %}
-{% assign post_thumbnail = post.image %}
+{% assign post_thumbnail = post.image | default: post.thumb | default: post.cover %}
 {% assign post_thumbnail_alt = post.title %}
 {% if post_thumbnail == nil or post_thumbnail == '' %}
   {% assign content_images = post.content | split: '<img' %}
