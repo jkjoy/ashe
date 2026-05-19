@@ -1,4 +1,12 @@
 {% include helpers.liquid %}
+{% assign load_lightbox = false %}
+{% if page.layout == 'album' %}
+  {% assign load_lightbox = true %}
+{% elsif ashe.content_images.auto_gallery.enabled and ashe.content_images.auto_gallery.lightbox %}
+  {% if page.layout == 'post' or page.layout == 'page' %}
+    {% assign load_lightbox = true %}
+  {% endif %}
+{% endif %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +21,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/fontello.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/slick.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/perfect-scrollbar.css' | relative_url }}">
-  {% if page.layout == 'album' %}
+  {% if load_lightbox %}
   <link rel="stylesheet" href="{{ ashe.albums.lightbox_css }}">
   {% endif %}
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">

@@ -237,6 +237,15 @@ albums:
   # 相册列表每页最多显示数量；留空或 0 表示显示全部。
   index_limit: 0
 
+content_images:
+  auto_gallery:
+    # 是否把文章正文中连续出现的多张图片自动转为相册网格。
+    enabled: true
+    # 至少连续多少张图片才转为相册网格。
+    min_images: 2
+    # 是否给自动相册启用 Lightbox 点击预览。
+    lightbox: true
+
 social_media:
   # 社交链接是否在新标签页打开。
   open_in_new_tab: true

@@ -29,8 +29,20 @@
   </div>
 </footer>
 </div>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+{% assign load_lightbox = false %}
+{% assign enable_content_auto_gallery = false %}
 {% if page.layout == 'album' %}
+  {% assign load_lightbox = true %}
+{% elsif ashe.content_images.auto_gallery.enabled %}
+  {% if page.layout == 'post' or page.layout == 'page' %}
+    {% assign enable_content_auto_gallery = true %}
+    {% if ashe.content_images.auto_gallery.lightbox %}
+      {% assign load_lightbox = true %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+{% if load_lightbox %}
 <script src="{{ ashe.albums.lightbox_js }}" charset="utf-8"></script>
 <script>
   if (window.lightbox) {
@@ -42,6 +54,13 @@
   }
 </script>
 {% endif %}
+<script>
+  window.AsheContentImages = {
+    autoGallery: {% if enable_content_auto_gallery %}true{% else %}false{% endif %},
+    minImages: {{ ashe.content_images.auto_gallery.min_images | default: 2 }},
+    lightbox: {% if load_lightbox and page.layout != 'album' %}true{% else %}false{% endif %}
+  };
+</script>
 <script src="{{ '/assets/js/custom-plugins.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/custom-scripts.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/jekyll-ashe.js' | relative_url }}"></script>

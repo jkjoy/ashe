@@ -95,6 +95,14 @@ images:
 ---
 ```
 
+## 正文图片
+
+- 文章页和普通页面正文中，连续出现 2 张及以上纯图片时，会自动转成相册式网格并支持 Lightbox 预览。
+- 配置位置：`_data/ashe.yml` 的 `content_images.auto_gallery`。
+- 关闭自动相册：把 `content_images.auto_gallery.enabled` 改成 `false`。
+- 调整触发数量：修改 `content_images.auto_gallery.min_images`，默认是 `2`。
+- 不想让某一组图片自动转换时，可给外层元素加 `class="no-auto-gallery"` 或 `data-no-gallery`。
+
 ## 常用开关
 
 - 订阅地址：`/feed.xml`，页面 `<head>` 已输出 RSS 发现链接，社交图标里也已加入 RSS。
