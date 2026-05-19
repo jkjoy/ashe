@@ -1,0 +1,25 @@
+{% include helpers.liquid %}
+{% assign category_menu = ashe.navigation.auto_categories %}
+{% assign sorted_categories = site.categories | sort %}
+{% assign max_items = category_menu.max_items | default: 0 | plus: 0 %}
+{% assign shown_count = 0 %}
+{% if category_menu.enabled and sorted_categories.size > 0 %}
+<li class="menu-item-has-children auto-category-menu">
+  <a href="{{ category_menu.url | default: '/archive/' | relative_url }}">{{ category_menu.title | default: '分类' }}</a>
+  <ul class="sub-menu">
+    {% for category in sorted_categories %}
+    {% if max_items == 0 or shown_count < max_items %}
+    {% assign category_name = category[0] %}
+    {% assign category_posts = category[1] %}
+    {% assign shown_count = shown_count | plus: 1 %}
+    <li>
+      <a href="{{ '/archive/' | relative_url }}?category={{ category_name | uri_escape }}">
+        <span class="category-menu-name">{{ category_name }}</span>
+        {% if category_menu.show_count %}<span class="category-menu-count">{{ category_posts.size }}</span>{% endif %}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</li>
+{% endif %}

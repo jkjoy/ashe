@@ -14,19 +14,6 @@ main:
     url: /
   - title: 相册
     url: /album/
-  - title: 旅行
-    url: /archive/?category=旅行
-  - title: 生活
-    url: /archive/?category=生活
-  - title: 美食
-    url: /archive/?category=美食
-  - title: 札记
-    url: /archive/?category=札记
-    children:
-      - title: 慢生活
-        url: /archive/?tag=慢生活
-      - title: 工作札记
-        url: /archive/?tag=工作札记
 
 footer:
   - title: 首页

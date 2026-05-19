@@ -76,6 +76,19 @@ navigation:
   mini_logo: ""
   # 导航栏迷你 Logo 最大宽度，单位 px。
   mini_logo_width: 70
+  auto_categories:
+    # 是否在主导航自动生成“分类”下拉菜单。
+    enabled: true
+    # 父级菜单标题。
+    title: 分类
+    # 父级菜单链接。
+    url: /archive/
+    # 插入位置，1 表示第一个菜单项前；超过已有菜单数量时会追加到末尾。
+    position: 3
+    # 是否在分类名后显示文章数量。
+    show_count: true
+    # 最多显示多少个分类；0 表示不限制。
+    max_items: 0
 
 featured_slider:
   # 是否启用首页轮播。

@@ -1092,6 +1092,18 @@ sup {
   margin: 0;
 }
 
+.category-menu-name {
+  display: inline-block;
+  max-width: calc(100% - 32px);
+}
+
+.category-menu-count {
+  float: right;
+  margin-left: 12px;
+  opacity: 0.6;
+  font-size: 11px;
+}
+
 #main-menu li.menu-item-has-children > a:after {
   font-family: "FontAwesome";
   content: "\f107";
@@ -1143,6 +1155,15 @@ sup {
   display: block;
   position: relative;
   z-index: 5;
+}
+
+#mobile-menu .category-menu-name {
+  max-width: calc(100% - 24px);
+}
+
+#mobile-menu .category-menu-count {
+  float: none;
+  margin-left: 8px;
 }
 
 #mobile-menu .sub-menu li {

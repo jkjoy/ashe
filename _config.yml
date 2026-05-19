@@ -9,8 +9,13 @@ baseurl: ""
 # 默认作者键名，会在 _data/authors.yml 中查找对应信息。
 author_default: sun
 
-# 文章永久链接结构。
-permalink: /:categories/:title/
+# 文章固定链接结构。
+# 常用写法：
+#   /posts/:slug/        -> /posts/morning-rituals/
+#   /archives/:slug/     -> /archives/morning-rituals/
+#   /:categories/:slug/  -> /札记/生活/morning-rituals/
+# 修改后需要重新构建站点；外链已收录时请自行处理旧链接跳转。
+permalink: /posts/:slug/
 
 # 相册集合：_albums 下的每个 Markdown 文件会生成一个相册详情页。
 collections:

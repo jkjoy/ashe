@@ -37,7 +37,13 @@
 
     <nav class="main-menu-container">
       <ul id="main-menu">
+        {% assign auto_category_position = ashe.navigation.auto_categories.position | default: 0 | plus: 0 %}
+        {% assign auto_category_rendered = false %}
         {% for item in nav.main %}
+        {% if ashe.navigation.auto_categories.enabled and auto_category_rendered != true and auto_category_position == forloop.index %}
+          {% include category-menu-item.html %}
+          {% assign auto_category_rendered = true %}
+        {% endif %}
         <li class="{% if item.children %}menu-item-has-children{% endif %}">
           <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
           {% if item.children %}
@@ -58,6 +64,9 @@
           {% endif %}
         </li>
         {% endfor %}
+        {% if ashe.navigation.auto_categories.enabled and auto_category_rendered != true %}
+          {% include category-menu-item.html %}
+        {% endif %}
       </ul>
     </nav>
 
@@ -71,7 +80,13 @@
 
     <nav class="mobile-menu-container">
       <ul id="mobile-menu">
+        {% assign auto_category_position = ashe.navigation.auto_categories.position | default: 0 | plus: 0 %}
+        {% assign auto_category_rendered = false %}
         {% for item in nav.main %}
+        {% if ashe.navigation.auto_categories.enabled and auto_category_rendered != true and auto_category_position == forloop.index %}
+          {% include category-menu-item.html %}
+          {% assign auto_category_rendered = true %}
+        {% endif %}
         <li class="{% if item.children %}menu-item-has-children{% endif %}">
           <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
           {% if item.children %}
@@ -92,6 +107,9 @@
           {% endif %}
         </li>
         {% endfor %}
+        {% if ashe.navigation.auto_categories.enabled and auto_category_rendered != true %}
+          {% include category-menu-item.html %}
+        {% endif %}
         {% if ashe.navigation.merge_mobile_menu %}
           {% for item in nav.top %}
           <li class="{% if item.children %}menu-item-has-children{% endif %}">

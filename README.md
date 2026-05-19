@@ -105,9 +105,11 @@ images:
 
 ## 常用开关
 
+- 文章固定链接：`_config.yml` 的 `permalink`，例如 `/posts/:slug/`、`/archives/:slug/`、`/:categories/:slug/`。
 - 订阅地址：`/feed.xml`，页面 `<head>` 已输出 RSS 发现链接，社交图标里也已加入 RSS。
 - 网站地图：`/sitemap.xml`，`robots.txt` 会自动声明该地址。
 - 发布前请把 `_config.yml` 的 `url` 改成真实域名，RSS 和网站地图都会用它生成绝对地址。
+- 主导航自动分类下拉：`navigation.auto_categories.enabled`，分类来自文章 front matter 的 `categories`。
 - 首页/列表作者：`blog_page.show_author`。
 - 首页/列表相关文章：`blog_page.show_related_posts`，排序由 `blog_page.related_orderby` 控制。
 - 文章页上一篇/下一篇导航：`single_page.show_navigation`。
