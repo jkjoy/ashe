@@ -1,4 +1,120 @@
-{% if page.comments_url %}
+{% include helpers.liquid %}
+{% assign comments = ashe.comments %}
+{% assign is_post = false %}
+{% if page.id %}
+  {% assign is_post = true %}
+{% endif %}
+{% assign comments_enabled = comments.enabled %}
+{% if page.comments == true %}
+  {% assign comments_enabled = true %}
+{% endif %}
+{% assign show_comments = false %}
+{% if comments_enabled and page.comments != false %}
+  {% if is_post or comments.show_on_pages or page.comments == true %}
+    {% assign show_comments = true %}
+  {% endif %}
+{% endif %}
+{% assign comment_key = page.comment_key | default: page.url %}
+{% assign comment_title = page.comment_title | default: page.title | default: site.title %}
+{% assign provider = page.comments_provider | default: comments.provider | default: 'twikoo' | downcase %}
+
+{% if show_comments %}
+<div class="comments-area" id="comments">
+  <h2 class="comment-title">{{ comments.title | default: '评论' }}</h2>
+
+  {% case provider %}
+  {% when 'twikoo' %}
+    {% assign twikoo = comments.twikoo %}
+    {% if twikoo.env_id and twikoo.env_id != '' %}
+    <div id="twikoo-comments" class="comments-provider comments-provider-twikoo"></div>
+    <script src="{{ twikoo.js }}"></script>
+    <script>
+      twikoo.init({
+        envId: {{ twikoo.env_id | jsonify }},
+        el: '#twikoo-comments',
+        path: {{ comment_key | jsonify }},
+        lang: {{ twikoo.lang | default: site.lang | default: 'zh-CN' | jsonify }}{% if twikoo.region and twikoo.region != '' %},
+        region: {{ twikoo.region | jsonify }}{% endif %}
+      });
+    </script>
+    {% else %}
+    <div class="comments-config-notice">Twikoo 已启用，但还没有配置 <code>comments.twikoo.env_id</code>。</div>
+    {% endif %}
+
+  {% when 'gitalk' %}
+    {% assign gitalk = comments.gitalk %}
+    {% assign gitalk_id = gitalk.id | default: comment_key %}
+    {% assign gitalk_labels = gitalk.labels %}
+    {% if gitalk_labels == nil or gitalk_labels == '' %}
+      {% assign gitalk_labels = 'Gitalk' | split: ',' %}
+    {% endif %}
+    {% if gitalk.client_id and gitalk.client_id != '' and gitalk.client_secret and gitalk.client_secret != '' and gitalk.repo and gitalk.repo != '' and gitalk.owner and gitalk.owner != '' and gitalk.admin and gitalk.admin.size > 0 %}
+    <link rel="stylesheet" href="{{ gitalk.css }}">
+    <div id="gitalk-comments" class="comments-provider comments-provider-gitalk"></div>
+    <script src="{{ gitalk.js }}"></script>
+    <script>
+      var gitalk = new Gitalk({
+        clientID: {{ gitalk.client_id | jsonify }},
+        clientSecret: {{ gitalk.client_secret | jsonify }},
+        repo: {{ gitalk.repo | jsonify }},
+        owner: {{ gitalk.owner | jsonify }},
+        admin: {{ gitalk.admin | jsonify }},
+        id: {{ gitalk_id | jsonify }},
+        labels: {{ gitalk_labels | jsonify }},
+        title: {{ comment_title | jsonify }},
+        body: {{ page.url | absolute_url | jsonify }},
+        language: {{ gitalk.language | default: site.lang | default: 'zh-CN' | jsonify }},
+        perPage: {{ gitalk.per_page | default: 10 | jsonify }},
+        pagerDirection: {{ gitalk.pager_direction | default: 'last' | jsonify }},
+        createIssueManually: {{ gitalk.create_issue_manually | jsonify }},
+        distractionFreeMode: {{ gitalk.distraction_free_mode | jsonify }},
+        enableHotKey: {{ gitalk.enable_hot_key | jsonify }}{% if gitalk.proxy and gitalk.proxy != '' %},
+        proxy: {{ gitalk.proxy | jsonify }}{% endif %}
+      });
+      gitalk.render('gitalk-comments');
+    </script>
+    {% else %}
+    <div class="comments-config-notice">Gitalk 已启用，但还没有完整配置 <code>client_id</code>、<code>client_secret</code>、<code>repo</code>、<code>owner</code> 和 <code>admin</code>。</div>
+    {% endif %}
+
+  {% when 'artalk' %}
+    {% assign artalk = comments.artalk %}
+    {% assign artalk_page_key = artalk.page_key | default: comment_key %}
+    {% assign artalk_page_title = artalk.page_title | default: comment_title %}
+    {% if artalk.server and artalk.server != '' and artalk.site and artalk.site != '' %}
+    <link rel="stylesheet" href="{{ artalk.css }}">
+    <div id="artalk-comments" class="comments-provider comments-provider-artalk"></div>
+    <script src="{{ artalk.js }}"></script>
+    <script>
+      Artalk.init({
+        el: '#artalk-comments',
+        pageKey: {{ artalk_page_key | jsonify }},
+        pageTitle: {{ artalk_page_title | jsonify }},
+        server: {{ artalk.server | jsonify }},
+        site: {{ artalk.site | jsonify }},
+        locale: {{ artalk.locale | default: site.lang | default: 'zh-CN' | jsonify }}{% if artalk.placeholder and artalk.placeholder != '' %},
+        placeholder: {{ artalk.placeholder | jsonify }}{% endif %}{% if artalk.no_comment and artalk.no_comment != '' %},
+        noComment: {{ artalk.no_comment | jsonify }}{% endif %}
+      });
+    </script>
+    {% else %}
+    <div class="comments-config-notice">Artalk 已启用，但还没有配置 <code>comments.artalk.server</code> 和 <code>comments.artalk.site</code>。</div>
+    {% endif %}
+
+  {% when 'external' %}
+    {% assign external_url = page.comments_url | default: comments.external.url %}
+    {% if external_url and external_url != '' %}
+    <p>此静态版本通过外部服务处理评论。</p>
+    <p><a href="{{ external_url }}" target="_blank" rel="noopener noreferrer">打开讨论</a></p>
+    {% else %}
+    <div class="comments-config-notice">外部评论已启用，但还没有配置 <code>comments.external.url</code> 或文章 <code>comments_url</code>。</div>
+    {% endif %}
+
+  {% else %}
+    <div class="comments-config-notice">未知评论系统：<code>{{ provider }}</code>。请使用 <code>twikoo</code>、<code>gitalk</code>、<code>artalk</code> 或 <code>external</code>。</div>
+  {% endcase %}
+</div>
+{% elsif page.comments_url and page.comments != false %}
 <div class="comments-area" id="comments">
   <h2 class="comment-title">评论</h2>
   <p>此静态版本通过外部服务处理评论。</p>

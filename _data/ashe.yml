@@ -170,6 +170,56 @@ single_page:
   # 相关文章排序：related / latest / none
   related_orderby: related
 
+comments:
+  # 全局评论开关；单篇文章可在 front matter 中设置 comments: false 关闭。
+  enabled: false
+  # 可选值：twikoo / gitalk / artalk / external
+  provider: twikoo
+  # 是否也在普通页面启用评论；默认只在文章页启用。
+  show_on_pages: false
+  # 评论区标题。
+  title: 评论
+  # 文章唯一键，默认使用 page.url；单篇文章可用 comment_key 覆盖。
+  twikoo:
+    # 腾讯云环境填 envId；Vercel 或自部署填服务地址。
+    env_id: "https://t.ittst.com"
+    # 腾讯云环境地域，非腾讯云可留空。
+    region: ""
+    lang: zh-CN
+    js: "https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"
+  gitalk:
+    client_id: ""
+    client_secret: ""
+    repo: ""
+    owner: ""
+    # 有仓库写权限、可初始化 issue 的 GitHub 用户名列表。
+    admin: []
+    labels: [Gitalk]
+    language: zh-CN
+    # Gitalk 的 id 长度必须小于 50；必要时请在文章 front matter 设置 comment_key。
+    id: ""
+    per_page: 10
+    pager_direction: last
+    create_issue_manually: false
+    distraction_free_mode: false
+    enable_hot_key: true
+    proxy: ""
+    css: "https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"
+    js: "https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"
+  artalk:
+    server: ""
+    site: Ashe
+    locale: zh-CN
+    page_key: ""
+    page_title: ""
+    placeholder: ""
+    no_comment: ""
+    css: "https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.css"
+    js: "https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.js"
+  external:
+    # 兼容旧的外部讨论链接；也可继续在单篇文章设置 comments_url。
+    url: ""
+
 social_media:
   # 社交链接是否在新标签页打开。
   open_in_new_tab: true

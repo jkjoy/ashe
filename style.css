@@ -2203,6 +2203,22 @@ body.ashe-dark-mode .archive-timeline-tags {
   margin-top: 30px;
 }
 
+.comments-provider {
+  margin-top: 4px;
+}
+
+.comments-config-notice {
+  padding: 14px 16px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.comments-config-notice code {
+  font-size: 13px;
+}
+
 #reply-title,
 #reply-title a,
 .comment-title h2,
