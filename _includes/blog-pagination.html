@@ -35,7 +35,7 @@
       {% assign older_page_raw = site.paginate_path | replace: ':num', paginator.next_page %}
       {% assign older_page_path = older_page_raw | relative_url %}
     <div class="previous-page">
-      <a href="{{ older_page_path }}"><i class="fa-solid fa-arrow-left-long"></i>&nbsp;Older Posts</a>
+      <a href="{{ older_page_path }}"><i class="fa-solid fa-arrow-left-long"></i>&nbsp;较早文章</a>
     </div>
     {% endif %}
     {% if paginator.previous_page %}
@@ -46,7 +46,7 @@
         {% assign newer_page_path = newer_page_raw | relative_url %}
       {% endif %}
     <div class="next-page">
-      <a href="{{ newer_page_path }}">Newer Posts&nbsp;<i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="{{ newer_page_path }}">较新文章&nbsp;<i class="fa-solid fa-arrow-right-long"></i></a>
     </div>
     {% endif %}
   {% endif %}

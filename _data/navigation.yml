@@ -2,35 +2,35 @@
 # 支持 children 字段生成下拉菜单。
 
 top:
-  - title: About
+  - title: 关于
     url: /about/
-  - title: Search
+  - title: 搜索
     url: /search/
-  - title: Archive
+  - title: 归档
     url: /archive/
 
 main:
-  - title: Home
+  - title: 首页
     url: /
-  - title: Travel
-    url: /archive/?category=Travel
-  - title: Lifestyle
-    url: /archive/?category=Lifestyle
-  - title: Food
-    url: /archive/?category=Food
-  - title: Journal
-    url: /archive/?category=Journal
+  - title: 旅行
+    url: /archive/?category=旅行
+  - title: 生活
+    url: /archive/?category=生活
+  - title: 美食
+    url: /archive/?category=美食
+  - title: 札记
+    url: /archive/?category=札记
     children:
-      - title: Slow Living
-        url: /archive/?tag=slow-living
-      - title: Work Notes
-        url: /archive/?tag=work-notes
+      - title: 慢生活
+        url: /archive/?tag=慢生活
+      - title: 工作札记
+        url: /archive/?tag=工作札记
 
 footer:
-  - title: Home
+  - title: 首页
     url: /
-  - title: About
+  - title: 关于
     url: /about/
-  - title: Archive
+  - title: 归档
     url: /archive/
 

@@ -1,15 +1,15 @@
 ---
-title: The Table After Dinner
+title: 晚餐后的桌面
 date: 2026-04-28 19:20:00 +0800
-categories: [Food, Lifestyle]
-tags: [hosting, home, food]
+categories: [美食, 生活]
+tags: [待客, 居家, 美食]
 image: /assets/images/img8.jpg
 author: sun
 ---
 
-The best sign of a good dinner is not silence or praise. It is when nobody stands up quickly.
+一顿好晚餐最好的迹象，不是安静，也不是称赞，而是没有人急着站起来。
 
-Glasses stay where they are, the plates get pushed aside without urgency, and the conversation stops caring about topics. That is the part I want to remember when I set the table next time.
+杯子还留在原处，盘子被慢慢推到一边，谈话也不再在意主题。下次摆桌子时，我最想记住的就是这个部分。
 
-Not perfection. Just enough warmth that people remain in their seats.
+不必完美。只要温暖到让人愿意继续坐着。
 

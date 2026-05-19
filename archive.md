@@ -1,7 +1,8 @@
 ---
 layout: archive
-title: Archive
+title: 归档
 permalink: /archive/
-description: Browse all posts, then refine by editing the archive page front matter or by linking with query-style category and tag URLs in navigation.
+description: 按时间顺序浏览全部文章，也可以通过导航中的分类和标签链接进行筛选。
+timeline: true
 ---
 

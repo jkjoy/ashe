@@ -18,7 +18,7 @@
   {% endif %}
   {% if settings.show_date %}
     {% if settings.show_author %}<span class="meta-sep">/</span>{% endif %}
-    <span class="post-date">{{ include.post.date | date: '%B %-d, %Y' }}</span>
+    <span class="post-date">{{ include.post.date | date: '%Y年%-m月%-d日' }}</span>
   {% endif %}
 </div>
 {% endif %}

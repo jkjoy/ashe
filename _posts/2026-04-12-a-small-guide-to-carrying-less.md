@@ -1,15 +1,15 @@
 ---
-title: A Small Guide to Carrying Less
+title: 少带一点的简单指南
 date: 2026-04-12 14:10:00 +0800
-categories: [Travel, Lifestyle]
-tags: [packing, minimal, travel]
+categories: [旅行, 生活]
+tags: [打包, 极简, 旅行]
 image: /assets/images/img11.jpg
 author: sun
 ---
 
-Packing light is easier when every item has a role in more than one situation. The problem is usually duplication, not quantity.
+当每件物品都能应对不止一种场景时，轻装就会容易很多。问题通常不在数量，而在重复。
 
-A notebook becomes an itinerary, a meal log, a sketchbook, and a place to keep names. One overshirt works on trains, cool evenings, and over-dressed cafés.
+一本笔记本可以是行程表、用餐记录、速写本，也可以用来记下名字。一件外搭能应付火车、微凉的夜晚和穿得稍正式的咖啡馆。
 
-The bag feels smaller, but the trip feels larger.
+包变小了，旅程反而显得更大。
 

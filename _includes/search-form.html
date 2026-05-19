@@ -1,6 +1,6 @@
 <form role="search" method="get" id="searchform" class="clear-fix" action="{{ '/search/' | relative_url }}">
-  <input type="search" name="q" id="s" placeholder="Search..." data-placeholder="Type then hit Enter..." value="{{ page.search_query | default: '' }}">
+  <input type="search" name="q" id="s" placeholder="搜索..." data-placeholder="输入后按回车搜索..." value="{{ page.search_query | default: '' }}">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="submit" id="searchsubmit" value="st">
+  <input type="submit" id="searchsubmit" value="搜索">
 </form>
 

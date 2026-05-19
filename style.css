@@ -1678,6 +1678,154 @@ sup {
   line-height: 24.2px;
 }
 
+/* Archive Timeline */
+.archive-timeline {
+  position: relative;
+  margin: 5px 0 10px;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.archive-timeline:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 10px;
+  left: 122px;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.16;
+}
+
+.archive-timeline-item {
+  position: relative;
+  margin: 0;
+}
+
+.archive-timeline-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  column-gap: 64px;
+  padding: 0 0 34px;
+  overflow: visible;
+}
+
+.archive-timeline-card:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 118px;
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+  color: #ca9b52;
+}
+
+.archive-timeline-date {
+  display: block;
+  margin-top: -1px;
+  font-family: 'Open Sans';
+  font-style: normal;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.archive-timeline-year,
+.archive-timeline-day {
+  display: block;
+}
+
+.archive-timeline-year {
+  font-size: 13px;
+}
+
+.archive-timeline-day {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.archive-timeline-content {
+  min-width: 0;
+  padding-bottom: 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.archive-timeline-item:last-child .archive-timeline-card {
+  padding-bottom: 0;
+}
+
+.archive-timeline-item:last-child .archive-timeline-content {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.archive-timeline-categories {
+  margin-bottom: 7px;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+
+.archive-timeline-categories a {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.archive-timeline-title {
+  margin: 0 0 10px;
+  font-size: 26px;
+  line-height: 34px;
+  letter-spacing: 0;
+}
+
+.archive-timeline-title a {
+  color: inherit;
+}
+
+.archive-timeline-title a:focus {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
+.archive-timeline-excerpt {
+  margin: 0;
+  font-size: 15px;
+  line-height: 28px;
+  text-align: left;
+}
+
+.archive-timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 14px;
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 22px;
+}
+
+.archive-timeline-tags a {
+  color: inherit;
+}
+
+.archive-timeline-tags a:before {
+  content: "#";
+}
+
+body.ashe-dark-mode .archive-timeline-content {
+  border-color: #6d6d6d;
+}
+
+body.ashe-dark-mode .archive-timeline-tags {
+  color: #9e9e9e;
+}
+
 
 
 /*--------------------------------------------------------------

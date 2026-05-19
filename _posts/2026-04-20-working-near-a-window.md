@@ -1,15 +1,15 @@
 ---
-title: Working Near a Window
+title: 在窗边工作
 date: 2026-04-20 09:00:00 +0800
-categories: [Journal]
-tags: [work-notes, focus, spaces]
+categories: [札记]
+tags: [工作札记, 专注, 空间]
 image: /assets/images/img6.jpg
 author: sun
 ---
 
-Light changes the pace of work more than most software decisions do. A desk near a window makes breaks feel obvious and long tasks feel less sealed off from the day.
+光线对工作节奏的影响，比大多数软件选择都更直接。靠窗的桌子会让休息变得自然，也让长任务不至于和一天本身隔绝开。
 
-I do not mean inspiration in a vague sense. I mean practical orientation. You can tell if the afternoon is thinning out, if rain is coming, if you have been sitting too long.
+我说的不是模糊意义上的灵感，而是很实际的方向感。你能知道下午是不是正在变淡，雨是不是快来了，也能意识到自己是不是坐得太久。
 
-Good workspaces return you to scale.
+好的工作空间，会把人带回合适的尺度里。
 

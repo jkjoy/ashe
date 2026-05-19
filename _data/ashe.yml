@@ -97,22 +97,22 @@ featured_slider:
   # 自定义轮播条目，仅在 source 为 custom 时生效。
   custom_items:
     - image: /assets/images/image_5.jpg
-      title: Morning Rituals That Keep Ideas Flowing
-      text: Small habits, gentle pacing, and quiet attention can shape a much calmer writing rhythm.
-      link: /journal/morning-rituals/
-      button_text: read more
+      title: 让想法持续流动的清晨仪式
+      text: 小习惯、慢节奏和安静的注意力，会把写作带入更稳定的状态。
+      link: /札记/生活/morning-rituals/
+      button_text: 继续阅读
       new_tab: false
     - image: /assets/images/image_3.jpg
-      title: Notes From a Weekend Market
-      text: Textures, scent, and color can turn an ordinary errand into a visual diary worth keeping.
-      link: /lifestyle/weekend-market-notes/
-      button_text: read more
+      title: 周末市集札记
+      text: 纹理、气味和颜色，会把一次普通采购变成值得收藏的视觉日记。
+      link: /生活/美食/weekend-market-notes/
+      button_text: 继续阅读
       new_tab: false
     - image: /assets/images/image_6.jpg
-      title: A Coastal Route for Slow Travel
-      text: The best parts of a trip are often the pauses between destinations, not the destinations alone.
-      link: /travel/coastal-route/
-      button_text: read more
+      title: 一条适合慢旅行的海岸线
+      text: 旅行里最好的部分，常常藏在两个目的地之间的停顿里。
+      link: /旅行/札记/a-coastal-route-for-slow-travel/
+      button_text: 继续阅读
       new_tab: false
 
 featured_links:
@@ -122,14 +122,14 @@ featured_links:
   location: both
   # 最多支持三项，和原主题保持一致。
   items:
-    - title: Lifestyle
-      url: /archive/?category=Lifestyle
+    - title: 生活
+      url: /archive/?category=生活
       image: /assets/images/lifestyle.jpg
-    - title: Food
-      url: /archive/?category=Food
+    - title: 美食
+      url: /archive/?category=美食
       image: /assets/images/food.jpg
-    - title: Travel
-      url: /archive/?category=Travel
+    - title: 旅行
+      url: /archive/?category=旅行
       image: /assets/images/img8.jpg
 
 blog_page:
@@ -195,11 +195,11 @@ typography:
 
 footer:
   # 支持 $year 与 $copy 两个占位符。
-  copyright: "$copy $year Ashe Theme"
+  copyright: "$copy $year Ashe 主题"
   # 是否显示返回顶部按钮。
   show_scrolltop: true
   # 页脚右下角信用信息，支持 HTML。
-  credit: 'Ashe Theme by <a href="https://wp-royal-themes.com/">WP Royal.</a>'
+  credit: 'Ashe 主题由 <a href="https://wp-royal-themes.com/">WP Royal.</a> 提供'
 
 preloader:
   # 是否启用页面预加载动画。
@@ -215,5 +215,5 @@ responsive:
   # 移动端菜单按钮样式：chevron-down / text
   menu_icon: chevron-down
   # 当 menu_icon 为 text 时显示的文字。
-  mobile_icon_text: Menu
+  mobile_icon_text: 菜单
 

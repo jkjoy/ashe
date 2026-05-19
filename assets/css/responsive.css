@@ -303,6 +303,44 @@
     margin-bottom: 18px;
   }
 
+  .archive-timeline:before {
+    left: 4px;
+  }
+
+  .archive-timeline-card {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    padding-left: 24px;
+  }
+
+  .archive-timeline-card:before {
+    left: 0;
+    top: 6px;
+  }
+
+  .archive-timeline-date {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .archive-timeline-year,
+  .archive-timeline-day {
+    display: inline;
+  }
+
+  .archive-timeline-year:after {
+    content: " ";
+  }
+
+  .archive-timeline-title {
+    font-size: 24px;
+    line-height: 31px;
+  }
+
+  .archive-timeline-content {
+    padding-bottom: 24px;
+  }
+
   .post-title,
   .page-title {
     font-size: 33px;

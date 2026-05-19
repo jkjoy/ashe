@@ -20,7 +20,7 @@
         {% for post in site.posts limit: widget.limit %}
         <li>
           <a class="rpwwt-post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <span class="rpwwt-post-date">{{ post.date | date: '%B %-d, %Y' }}</span>
+          <span class="rpwwt-post-date">{{ post.date | date: '%Y年%-m月%-d日' }}</span>
         </li>
         {% endfor %}
       </ul>

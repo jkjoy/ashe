@@ -1,15 +1,15 @@
 ---
-title: A Coastal Route for Slow Travel
+title: 一条适合慢旅行的海岸线
 date: 2026-05-03 17:40:00 +0800
-categories: [Travel, Journal]
-tags: [coast, itineraries, slow-living]
+categories: [旅行, 札记]
+tags: [海岸, 行程, 慢生活]
 image: /assets/images/image_6.jpg
 author: sun
 ---
 
-Fast itineraries flatten memory. You remember stations, receipts, and check-in times, but not the light, the wind, or the conversations between destinations.
+太快的行程会把记忆压平。你会记得车站、票据和入住时间，却很难记住光线、风，以及两个目的地之间的谈话。
 
-This route worked because it left room between stops. The best stretch was not a landmark at all, just a narrow road with water on one side and laundry lines on the other.
+这条路线之所以舒服，是因为每一站之间都留了余地。最好的那一段并不是某个地标，而是一条窄路，一边是水，一边是晾衣绳。
 
-When the schedule is lighter, details have somewhere to land.
+日程变轻之后，细节才有地方落下来。
 

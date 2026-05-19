@@ -1,15 +1,15 @@
 ---
-title: Notes From a Weekend Market
+title: 周末市集札记
 date: 2026-05-08 10:15:00 +0800
-categories: [Lifestyle, Food]
-tags: [markets, photography, weekends]
+categories: [生活, 美食]
+tags: [市集, 摄影, 周末]
 image: /assets/images/image_3.jpg
 author: sun
 ---
 
-Markets are useful places to study color without trying. Crates, paper wraps, handwritten labels, and the uneven polish of fruit tell you more than a trend board ever could.
+市集是观察颜色的好地方，而且不需要刻意。木箱、包纸、手写标签，还有水果表面不均匀的光泽，比任何趋势板都更有信息量。
 
-I like arriving before the crowd. The conversations are slower, and the stallholders still have energy to talk about where things came from and how they want them cooked.
+我喜欢在人潮到来前抵达。那时候对话更慢，摊主也还有精神聊这些食材从哪里来、适合怎么做。
 
-By the time I leave, the bag is full, but the better part is usually the notebook.
+离开时袋子已经装满，但更值得带走的，通常是本子里的记录。
 

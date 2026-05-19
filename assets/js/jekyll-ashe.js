@@ -52,11 +52,11 @@
 
     if ($("#archive-description-text").length) {
       if (category) {
-        $("#archive-description-text").text("Showing posts in category: " + category);
+        $("#archive-description-text").text("当前分类：" + category);
       } else if (tag) {
-        $("#archive-description-text").text("Showing posts tagged: " + tag);
+        $("#archive-description-text").text("当前标签：" + tag);
       } else if (q) {
-        $("#archive-description-text").text('Showing search results for: "' + q + '"');
+        $("#archive-description-text").text('搜索结果："' + q + '"');
       }
     }
 

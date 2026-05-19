@@ -5,49 +5,46 @@ sidebar_left: []
 
 sidebar_right:
   - type: search
-    title: Search
+    title: 搜索
   - type: about
-    title: About Me
+    title: 关于我
     image: /assets/images/img2.jpg
     text: >-
-      A quiet corner for notes on travel, meals, work rhythms, and the small details
-      that make ordinary days feel memorable.
+      这里记录旅行、餐桌、工作节奏，以及让普通日子变得值得记住的细小片段。
   - type: recent_posts
-    title: Recent Posts
+    title: 最新文章
     limit: 4
   - type: categories
-    title: Categories
+    title: 分类
   - type: tags
-    title: Tags
+    title: 标签
 
 sidebar_alt:
   - type: text
-    title: Welcome
+    title: 欢迎
     content: >-
-      This off-canvas area replaces the original WordPress “Sidebar Alt”.
-      You can place introduction text, links, or any other simple content here.
+      这个侧边抽屉替代原 WordPress 主题里的备用侧栏，可放简介、链接或其他简短内容。
   - type: social
-    title: Follow Me
+    title: 关注我
   - type: recent_posts
-    title: Latest Notes
+    title: 最新笔记
     limit: 3
 
 footer:
   - type: text
-    title: About Ashe
+    title: 关于 Ashe
     content: >-
-      A Jekyll port that keeps the original Ashe presentation style while moving
-      manageable settings into flat files.
+      这是 Ashe 主题的 Jekyll 移植版，保留原有展示风格，并把可管理设置放入静态数据文件。
   - type: recent_posts
-    title: Recent Posts
+    title: 最新文章
     limit: 3
   - type: links
-    title: Quick Links
+    title: 快捷链接
     items:
-      - title: Search
+      - title: 搜索
         url: /search/
-      - title: Archive
+      - title: 归档
         url: /archive/
-      - title: About
+      - title: 关于
         url: /about/
 

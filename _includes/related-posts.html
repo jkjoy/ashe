@@ -22,14 +22,14 @@
         <section>
           <a href="{{ post.url | relative_url }}"><img src="{{ post.image | relative_url }}" alt="{{ post.title }}"></a>
           <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
-          <span class="related-post-date">{{ post.date | date: '%B %-d, %Y' }}</span>
+          <span class="related-post-date">{{ post.date | date: '%Y年%-m月%-d日' }}</span>
         </section>
       {% endif %}
     {% endfor %}
   {% endcapture %}
   {% if related_count > 0 %}
   <div class="related-posts">
-    <h3>You May Also Like</h3>
+    <h3>你可能也会喜欢</h3>
     {{ related_markup }}
     <div class="clear-fix"></div>
   </div>

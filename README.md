@@ -1,4 +1,4 @@
-# Ashe for Jekyll
+# Ashe Jekyll 中文版
 
 这个项目把 `/Users/sun/Downloads/ashe` 的 WordPress 版 `Ashe` 样式迁移到了 Jekyll，目标是尽量保留原有页面结构、样式层和交互表现，不主动改视觉风格。
 
@@ -18,11 +18,11 @@
 ## 已迁移的内容
 
 - 页头、顶部栏、主导航、移动菜单
-- Featured Slider / Featured Links
+- 精选轮播与精选链接
 - 首页博客列表与分页
 - 单篇文章布局、作者简介、相关文章、上一篇/下一篇导航
 - 抽屉侧栏、左右侧栏、页脚小组件
-- 原主题静态资源：`style.css`、`responsive.css`、`fontawesome`、`fontello`、`slick`、`perfect-scrollbar`、原始 JS
+- 原主题静态资源：`style.css`、`responsive.css`、`fontawesome`、`fontello`、`slick`、`perfect-scrollbar`、原始 JavaScript
 - `default / dark / box` 三种主题皮肤
 
 ## 没有做成设置项的部分
@@ -31,9 +31,9 @@
 
 - WordPress 原生评论系统
 - WooCommerce 相关功能
-- WordPress Widget 后台拖拽管理
-- Customizer repeater 的后台编辑界面
-- Elementor / Beaver Builder / Gutenberg 后台联动能力
+- WordPress 小组件后台拖拽管理
+- Customizer 重复项的后台编辑界面
+- Elementor、Beaver Builder、Gutenberg 的后台联动能力
 - 无限滚动、后台预览专用逻辑
 
 这些能力如果后续需要，可以在 Jekyll 上另行接入第三方服务或客户端脚本，但当前迁移不为它们预留空设置。

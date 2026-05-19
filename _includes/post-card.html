@@ -41,7 +41,7 @@
           {% if is_list and ashe.blog_page.show_author and author %}
           <span class="meta-sep">/</span>
           {% endif %}
-          <span class="post-date">{{ post.date | date: '%B %-d, %Y' }}</span>
+          <span class="post-date">{{ post.date | date: '%Y年%-m月%-d日' }}</span>
         {% endif %}
       </div>
     </header>
@@ -57,7 +57,7 @@
     {% endif %}
 
     <div class="read-more">
-      <a href="{{ post.url | relative_url }}">read more</a>
+      <a href="{{ post.url | relative_url }}">继续阅读</a>
     </div>
 
     <footer class="post-footer">

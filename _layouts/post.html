@@ -28,7 +28,7 @@ body_class: single single-post
         <h1 class="post-title">{{ page.title }}</h1>
         {% if ashe.single_page.show_date %}
         <div class="post-meta clear-fix">
-          <span class="post-date">{{ page.date | date: '%B %-d, %Y' }}</span>
+          <span class="post-date">{{ page.date | date: '%Y年%-m月%-d日' }}</span>
         </div>
         {% endif %}
       </header>
@@ -46,7 +46,7 @@ body_class: single single-post
         {% if ashe.single_page.show_author %}
         {% assign author_key = page.author | default: site.author_default %}
         {% assign author = authors[author_key] %}
-        <span class="post-author">By&nbsp;<a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a></span>
+        <span class="post-author">作者：<a href="{{ '/authors/' | append: author_key | append: '/' | relative_url }}">{{ author.name }}</a></span>
         {% endif %}
         {% assign share_enabled = false %}
         {% if ashe.blog_page.show_share_facebook or ashe.blog_page.show_share_twitter or ashe.blog_page.show_share_pinterest or ashe.blog_page.show_share_whatsapp or ashe.blog_page.show_share_linkedin or ashe.blog_page.show_share_reddit or ashe.blog_page.show_share_tumblr %}

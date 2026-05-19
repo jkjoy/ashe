@@ -77,9 +77,9 @@
                 <h2 class="slider-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
                 <div class="slider-content">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
                 <div class="slider-read-more">
-                  <a href="{{ post.url | relative_url }}">read more</a>
+                  <a href="{{ post.url | relative_url }}">继续阅读</a>
                 </div>
-                <div class="slider-date">{{ post.date | date: '%B %-d, %Y' }}</div>
+                <div class="slider-date">{{ post.date | date: '%Y年%-m月%-d日' }}</div>
               </div>
             </div>
           </div>

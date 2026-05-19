@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: Search
+title: 搜索
 permalink: /search/
-description: Search results are filtered client-side from the generated post list.
+description: 搜索结果会基于生成后的文章列表在浏览器端过滤。
 ---

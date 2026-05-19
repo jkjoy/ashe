@@ -2,10 +2,9 @@
 # 文章 front matter 的 author 字段会以这里的键名为准。
 
 sun:
-  name: Sun
+  name: 孙
   bio: >-
-    Writes about slow travel, quiet routines, seasonal food, and the visual texture
-    of everyday life.
+    记录慢旅行、安静日常、时令食物，以及生活里值得停看的视觉细节。
   avatar: /assets/images/img1.jpg
   website: ""
 
