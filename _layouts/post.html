@@ -60,8 +60,12 @@ body_class: single single-post
     {% if ashe.single_page.show_author_desc %}
       {% include author-description.html %}
     {% endif %}
-    {% include single-navigation.html %}
-    {% include related-posts.html orderby=ashe.single_page.related_orderby %}
+    {% if ashe.single_page.show_navigation %}
+      {% include single-navigation.html %}
+    {% endif %}
+    {% if ashe.single_page.show_related_posts and ashe.single_page.related_orderby != 'none' %}
+      {% include related-posts.html orderby=ashe.single_page.related_orderby %}
+    {% endif %}
     {% include comments-area.html %}
   </div>
   {% include sidebar-right.html %}

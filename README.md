@@ -52,6 +52,19 @@
 
 在 `_data/ashe.yml` 的 `social_media.items` 里填写链接即可显示图标。已补充微信、微博、Mastodon、QQ、Telegram 等常见平台，`title` 用作提示文本，`rel` 可用于像 Mastodon 这样的 `me` 关系声明。
 
+顶部栏不会默认显示社交图标；如确实需要，可把 `_data/ashe.yml` 中的 `top_bar.show_socials` 改为 `true`。
+
+## 常用开关
+
+- 订阅地址：`/feed.xml`，页面 `<head>` 已输出 RSS 发现链接，社交图标里也已加入 RSS。
+- 网站地图：`/sitemap.xml`，`robots.txt` 会自动声明该地址。
+- 发布前请把 `_config.yml` 的 `url` 改成真实域名，RSS 和网站地图都会用它生成绝对地址。
+- 首页/列表作者：`blog_page.show_author`。
+- 首页/列表相关文章：`blog_page.show_related_posts`，排序由 `blog_page.related_orderby` 控制。
+- 文章页上一篇/下一篇导航：`single_page.show_navigation`。
+- 文章页上一篇/下一篇预览图：`single_page.show_navigation_image`。
+- 文章页相关文章：`single_page.show_related_posts`，排序由 `single_page.related_orderby` 控制。
+
 ## 本地运行
 
 ```bash

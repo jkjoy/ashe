@@ -74,7 +74,7 @@
       {% endif %}
     </footer>
 
-    {% if is_list != true and ashe.blog_page.related_orderby != 'none' %}
+    {% if is_list != true and ashe.blog_page.show_related_posts and ashe.blog_page.related_orderby != 'none' %}
       {% include related-posts.html orderby=ashe.blog_page.related_orderby post=post %}
     {% endif %}
   {% if is_list %}</div>{% endif %}

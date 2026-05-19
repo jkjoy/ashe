@@ -2,7 +2,9 @@
 {% if ashe.top_bar.enabled %}
 <div id="top-bar" class="clear-fix">
   <div{% if ashe.general.header_width == 'contained' %} class="boxed-wrapper"{% endif %}>
+    {% if ashe.top_bar.show_socials %}
     {% include social-icons.html class="top-bar-socials" %}
+    {% endif %}
     {% assign top_menu = nav.top %}
     {% if top_menu and top_menu.size > 0 %}
     <nav class="top-menu-container">
