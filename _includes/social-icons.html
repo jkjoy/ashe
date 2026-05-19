@@ -7,7 +7,15 @@
 <div class="{{ wrapper_class }}">
   {% for item in ashe.social_media.items %}
     {% if item.url and item.url != '' %}
-    <a href="{{ item.url }}" target="{{ target }}" rel="{% if target == '_blank' %}noopener noreferrer{% endif %}">
+    {% assign item_title = item.title | default: item.icon %}
+    {% assign rel = '' %}
+    {% if target == '_blank' %}
+      {% assign rel = 'noopener noreferrer' %}
+    {% endif %}
+    {% if item.rel and item.rel != '' %}
+      {% assign rel = rel | append: ' ' | append: item.rel | strip %}
+    {% endif %}
+    <a href="{{ item.url }}" target="{{ target }}" title="{{ item_title }}" aria-label="{{ item_title }}"{% if rel != '' %} rel="{{ rel }}"{% endif %}>
       <i class="{% include social-icon-class.html icon=item.icon %}"></i>
     </a>
     {% endif %}

@@ -48,6 +48,10 @@
 - 按所选服务填写对应配置块，例如 Twikoo 的 `env_id`、Gitalk 的 OAuth 与仓库信息、Artalk 的 `server` 和 `site`。
 - 单篇文章可用 `comments: false` 关闭评论，用 `comments: true` 在全局关闭时单独启用，用 `comments_provider` 或 `comment_key` 覆盖默认评论系统和文章唯一键。
 
+## 社交链接
+
+在 `_data/ashe.yml` 的 `social_media.items` 里填写链接即可显示图标。已补充微信、微博、Mastodon、QQ、Telegram 等常见平台，`title` 用作提示文本，`rel` 可用于像 Mastodon 这样的 `me` 关系声明。
+
 ## 本地运行
 
 ```bash

@@ -223,14 +223,36 @@ comments:
 social_media:
   # 社交链接是否在新标签页打开。
   open_in_new_tab: true
+  # url 留空则不显示；title 用于悬停提示与无障碍标签。
+  # 微信可填二维码图片页或自定义介绍页；QQ 可填 tencent://message 等可用链接。
   items:
     - icon: facebook
+      title: Facebook
       url: ""
     - icon: x-twitter
+      title: X
       url: ""
     - icon: instagram
+      title: Instagram
       url: ""
     - icon: pinterest
+      title: Pinterest
+      url: ""
+    - icon: weixin
+      title: 微信
+      url: ""
+    - icon: weibo
+      title: 微博
+      url: ""
+    - icon: mastodon
+      title: Mastodon
+      url: "https://zxd.im/@sun"
+      rel: me
+    - icon: qq
+      title: QQ
+      url: ""
+    - icon: telegram
+      title: Telegram
       url: ""
 
 typography:
