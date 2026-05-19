@@ -14,14 +14,57 @@
 {% if is_list %}
   {% assign excerpt_words = 33 %}
 {% endif %}
-<article id="post-{{ post.slug }}" class="blog-post clear-fix{% if ashe.blog_page.show_dropcaps %} ashe-dropcaps{% endif %}{% if post.image %} has-post-thumbnail{% endif %}" data-categories="{{ post.categories | join: ',' | downcase }}" data-tags="{{ post.tags | join: ',' | downcase }}" data-author="{{ author_key | downcase }}" data-search="{{ post.title | append: ' ' | append: post.excerpt | append: ' ' | append: post.content | append: ' ' | append: post.categories | append: ' ' | append: post.tags | strip_html | strip_newlines | escape }}">
+{% assign post_thumbnail = post.image %}
+{% assign post_thumbnail_alt = post.title %}
+{% if post_thumbnail == nil or post_thumbnail == '' %}
+  {% assign content_images = post.content | split: '<img' %}
+  {% for image_part in content_images offset: 1 limit: 1 %}
+    {% assign src_parts = image_part | split: 'src="' %}
+    {% if src_parts.size > 1 %}
+      {% assign post_thumbnail = src_parts | last | split: '"' | first %}
+    {% else %}
+      {% assign src_parts = image_part | split: "src='" %}
+      {% if src_parts.size > 1 %}
+        {% assign post_thumbnail = src_parts | last | split: "'" | first %}
+      {% endif %}
+    {% endif %}
+    {% assign alt_parts = image_part | split: 'alt="' %}
+    {% if alt_parts.size > 1 %}
+      {% assign post_thumbnail_alt = alt_parts | last | split: '"' | first %}
+    {% else %}
+      {% assign alt_parts = image_part | split: "alt='" %}
+      {% if alt_parts.size > 1 %}
+        {% assign post_thumbnail_alt = alt_parts | last | split: "'" | first %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if post_thumbnail == nil or post_thumbnail == '' %}
+  {% assign markdown_images = post.content | split: '![' %}
+  {% for image_part in markdown_images offset: 1 limit: 1 %}
+    {% assign markdown_parts = image_part | split: '](' %}
+    {% if markdown_parts.size > 1 %}
+      {% assign post_thumbnail = markdown_parts | last | split: ')' | first | split: ' ' | first %}
+      {% assign post_thumbnail_alt = markdown_parts | first | default: post.title %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign has_post_thumbnail = false %}
+{% if post_thumbnail and post_thumbnail != '' %}
+  {% assign has_post_thumbnail = true %}
+{% endif %}
+{% assign post_thumbnail_url = post_thumbnail %}
+{% if has_post_thumbnail %}
+  {% unless post_thumbnail_url contains '://' %}
+    {% assign post_thumbnail_url = post_thumbnail_url | relative_url %}
+  {% endunless %}
+{% else %}
+  {% assign post_thumbnail_url = '/assets/images/image_1.jpg' | relative_url %}
+{% endif %}
+<article id="post-{{ post.slug }}" class="blog-post clear-fix{% if ashe.blog_page.show_dropcaps %} ashe-dropcaps{% endif %}{% if has_post_thumbnail %} has-post-thumbnail{% endif %}" data-categories="{{ post.categories | join: ',' | downcase }}" data-tags="{{ post.tags | join: ',' | downcase }}" data-author="{{ author_key | downcase }}" data-search="{{ post.title | append: ' ' | append: post.excerpt | append: ' ' | append: post.content | append: ' ' | append: post.categories | append: ' ' | append: post.tags | strip_html | strip_newlines | escape }}">
   <div class="post-media">
     <a href="{{ post.url | relative_url }}"></a>
-    {% if post.image %}
-    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-    {% else %}
-    <img src="{{ '/assets/images/image_1.jpg' | relative_url }}" alt="{{ post.title }}">
-    {% endif %}
+    <img src="{{ post_thumbnail_url }}" alt="{{ post_thumbnail_alt | escape }}">
   </div>
   {% if is_list %}<div class="post-content-wrap">{% endif %}
     <header class="post-header">
