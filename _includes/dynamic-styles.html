@@ -132,6 +132,7 @@
   .page-content .post-title a,
   .page-content .author-description h4 a,
   .page-content .related-posts h4 a,
+  .page-content .post-navigation-title,
   .page-content .blog-pagination .previous-page a,
   .page-content .blog-pagination .next-page a,
   blockquote,
@@ -140,6 +141,7 @@
   }
 
   .page-content .post-title a:hover,
+  .page-content .post-navigation-link:hover .post-navigation-title,
   a:not(.header-logo-a):hover,
   #page-footer a:hover {
     color: {{ ashe.colors.content_accent }};
@@ -183,6 +185,8 @@
   [data-layout*="list"] .blog-grid > li,
   .archive-timeline-content,
   .comments-config-notice,
+  .page-content .post-navigation-text,
+  .page-content .post-navigation-link,
   .page-content .author-description,
   .page-content .related-posts,
   .page-content .entry-comments,
@@ -575,6 +579,7 @@
   .page-content .post-title a,
   .page-content .author-description h4 a,
   .page-content .related-posts h4 a,
+  .page-content .post-navigation-title,
   .page-content .blog-pagination .previous-page a,
   .page-content .blog-pagination .next-page a,
   blockquote,
@@ -663,6 +668,8 @@
   [data-layout*="list"] .blog-grid > li,
   .archive-timeline-content,
   .comments-config-notice,
+  .page-content .post-navigation-text,
+  .page-content .post-navigation-link,
   .page-content .author-description,
   .page-content .related-posts,
   .page-content .entry-comments,
@@ -701,6 +708,15 @@
 
   body.ashe-dark-mode img {
     filter: brightness(.8) contrast(1.2);
+  }
+
+  body.ashe-dark-mode .post-navigation-link {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  body.ashe-dark-mode .post-navigation-link:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
   }
   {% endif %}
 

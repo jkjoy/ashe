@@ -297,6 +297,26 @@
     display: none !important;
   }
 
+  .post-navigation-text {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+
+  .post-navigation-link,
+  .post-navigation-spacer {
+    min-height: 72px;
+  }
+
+  .post-navigation-spacer {
+    display: none;
+  }
+
+  .post-navigation-link--next {
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .slider-title {
     font-size: 28px;
     line-height: 30px;

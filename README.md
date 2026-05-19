@@ -62,7 +62,7 @@
 - 首页/列表作者：`blog_page.show_author`。
 - 首页/列表相关文章：`blog_page.show_related_posts`，排序由 `blog_page.related_orderby` 控制。
 - 文章页上一篇/下一篇导航：`single_page.show_navigation`。
-- 文章页上一篇/下一篇预览图：`single_page.show_navigation_image`。
+- 文章页上一篇/下一篇导航样式：`single_page.navigation_style`，可选 `original`（原样侧边预览）、`compact`（缩小侧边预览）、`text`（底部文字导航）。
 - 文章页相关文章：`single_page.show_related_posts`，排序由 `single_page.related_orderby` 控制。
 
 ## 本地运行

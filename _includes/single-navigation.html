@@ -1,15 +1,45 @@
 {% assign prev_post = page.previous %}
 {% assign next_post = page.next %}
-{% if prev_post %}
-<a href="{{ prev_post.url | relative_url }}" title="{{ prev_post.title }}" class="single-navigation previous-post">
-  {% if ashe.single_page.show_navigation_image and prev_post.image %}<img src="{{ prev_post.image | relative_url }}" alt="{{ prev_post.title }}">{% endif %}
-  <i class="fa-solid fa-angle-right"></i>
-</a>
+{% assign navigation_style = ashe.single_page.navigation_style | default: 'original' %}
+{% if navigation_style != 'compact' and navigation_style != 'text' %}
+  {% assign navigation_style = 'original' %}
 {% endif %}
-{% if next_post %}
-<a href="{{ next_post.url | relative_url }}" title="{{ next_post.title }}" class="single-navigation next-post">
-  {% if ashe.single_page.show_navigation_image and next_post.image %}<img src="{{ next_post.image | relative_url }}" alt="{{ next_post.title }}">{% endif %}
-  <i class="fa-solid fa-angle-left"></i>
-</a>
+
+{% if navigation_style == 'text' %}
+  {% if prev_post or next_post %}
+  <nav class="post-navigation-text" aria-label="文章导航">
+    {% if prev_post %}
+    <a href="{{ prev_post.url | relative_url }}" class="post-navigation-link post-navigation-link--previous" rel="prev">
+      <span class="post-navigation-label"><i class="fa-solid fa-angle-left"></i>上一篇</span>
+      <span class="post-navigation-title">{{ prev_post.title }}</span>
+    </a>
+    {% else %}
+    <span class="post-navigation-spacer" aria-hidden="true"></span>
+    {% endif %}
+    {% if next_post %}
+    <a href="{{ next_post.url | relative_url }}" class="post-navigation-link post-navigation-link--next" rel="next">
+      <span class="post-navigation-label">下一篇<i class="fa-solid fa-angle-right"></i></span>
+      <span class="post-navigation-title">{{ next_post.title }}</span>
+    </a>
+    {% endif %}
+  </nav>
+  {% endif %}
+{% else %}
+  {% assign navigation_class = 'single-navigation--original' %}
+  {% if navigation_style == 'compact' %}
+    {% assign navigation_class = 'single-navigation--compact' %}
+  {% endif %}
+  {% if prev_post %}
+  <a href="{{ prev_post.url | relative_url }}" title="{{ prev_post.title }}" class="single-navigation previous-post {{ navigation_class }}" rel="prev">
+    {% if prev_post.image %}<img src="{{ prev_post.image | relative_url }}" alt="{{ prev_post.title }}">{% endif %}
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+  {% endif %}
+  {% if next_post %}
+  <a href="{{ next_post.url | relative_url }}" title="{{ next_post.title }}" class="single-navigation next-post {{ navigation_class }}" rel="next">
+    {% if next_post.image %}<img src="{{ next_post.image | relative_url }}" alt="{{ next_post.title }}">{% endif %}
+    <i class="fa-solid fa-angle-left"></i>
+  </a>
+  {% endif %}
 {% endif %}
 
