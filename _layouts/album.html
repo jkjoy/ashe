@@ -3,6 +3,22 @@ layout: default
 body_class: page album-detail
 ---
 {% include helpers.liquid %}
+{% assign has_configured_images = false %}
+{% if page.images and page.images.size > 0 %}
+  {% assign has_configured_images = true %}
+{% endif %}
+{% assign rendered_images = content | split: '<img' %}
+{% assign parsed_image_count = rendered_images.size | minus: 1 %}
+{% assign use_parsed_images = false %}
+{% if has_configured_images != true and parsed_image_count > 0 %}
+  {% assign use_parsed_images = true %}
+{% endif %}
+{% assign album_photo_count = 0 %}
+{% if has_configured_images %}
+  {% assign album_photo_count = page.images.size %}
+{% elsif use_parsed_images %}
+  {% assign album_photo_count = parsed_image_count %}
+{% endif %}
 <div class="main-content clear-fix{% if ashe.general.content_width == 'boxed' %} boxed-wrapper{% endif %}">
   <div class="main-container has-no-sidebars">
     <article id="album-{{ page.slug }}" class="album">
@@ -10,20 +26,21 @@ body_class: page album-detail
         <h1 class="page-title">{{ page.title }}</h1>
         <div class="album-meta">
           {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%-m月%-d日' }}</time>{% endif %}
-          {% if page.images and page.images.size > 0 %}<span>{{ page.images.size }} 张照片</span>{% endif %}
+          {% if album_photo_count > 0 %}<span>{{ album_photo_count }} 张照片</span>{% endif %}
         </div>
         {% if page.description %}<p class="album-intro">{{ page.description }}</p>{% endif %}
       </header>
 
       {% if content and content != '' %}
-      <div class="post-content album-content">
+      <div class="post-content album-content{% if use_parsed_images %} album-content--parsed-images{% endif %}">
         {{ content }}
       </div>
       {% endif %}
 
-      {% if page.images and page.images.size > 0 %}
+      {% if has_configured_images or use_parsed_images %}
       <div class="gallery-container album-gallery-container">
         {% assign lightbox_group = page.slug | default: page.title | slugify %}
+        {% if has_configured_images %}
         {% for photo in page.images %}
         {% assign photo_url = photo.src | default: photo.url | default: photo.path | default: photo %}
         {% assign photo_thumb = photo.thumb | default: photo.thumbnail | default: photo_url %}
@@ -61,6 +78,58 @@ body_class: page album-detail
           </a>
         </div>
         {% endfor %}
+        {% else %}
+        {% for image_part in rendered_images offset: 1 %}
+        {% assign photo_url = '' %}
+        {% assign photo_alt = page.title %}
+        {% assign photo_title = '' %}
+        {% assign src_parts = image_part | split: 'src="' %}
+        {% if src_parts.size > 1 %}
+          {% assign photo_url = src_parts | last | split: '"' | first %}
+        {% else %}
+          {% assign src_parts = image_part | split: "src='" %}
+          {% if src_parts.size > 1 %}
+            {% assign photo_url = src_parts | last | split: "'" | first %}
+          {% endif %}
+        {% endif %}
+        {% assign alt_parts = image_part | split: 'alt="' %}
+        {% if alt_parts.size > 1 %}
+          {% assign photo_alt = alt_parts | last | split: '"' | first %}
+        {% else %}
+          {% assign alt_parts = image_part | split: "alt='" %}
+          {% if alt_parts.size > 1 %}
+            {% assign photo_alt = alt_parts | last | split: "'" | first %}
+          {% endif %}
+        {% endif %}
+        {% assign title_parts = image_part | split: 'title="' %}
+        {% if title_parts.size > 1 %}
+          {% assign photo_title = title_parts | last | split: '"' | first %}
+        {% else %}
+          {% assign title_parts = image_part | split: "title='" %}
+          {% if title_parts.size > 1 %}
+            {% assign photo_title = title_parts | last | split: "'" | first %}
+          {% endif %}
+        {% endif %}
+        {% if photo_title == '' %}
+          {% assign photo_title = photo_alt %}
+        {% endif %}
+        {% assign photo_url_output = photo_url %}
+        {% if photo_url_output and photo_url_output != '' %}
+          {% unless photo_url_output contains '://' %}
+            {% assign photo_url_output = photo_url_output | relative_url %}
+          {% endunless %}
+        {% endif %}
+        {% if photo_url_output and photo_url_output != '' %}
+        <div class="picture-container">
+          <a target="_blank" rel="noopener" href="{{ photo_url_output }}" data-lightbox="{{ lightbox_group }}" data-title="{{ photo_title | escape }}">
+            <picture>
+              <img src="{{ photo_url_output }}" alt="{{ photo_alt | escape }}" class="img-thumbnail" loading="lazy">
+            </picture>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
       </div>
       {% endif %}
     </article>

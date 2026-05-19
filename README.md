@@ -31,7 +31,7 @@
 以下功能依赖 WordPress 后端、插件系统或动态数据库能力，因此没有保留为可配置项：
 
 - WordPress 原生评论系统
-- WooCommerce 相关功能
+- 电商插件和动态商店相关功能
 - WordPress 小组件后台拖拽管理
 - Customizer 重复项的后台编辑界面
 - Elementor、Beaver Builder、Gutenberg 的后台联动能力
@@ -58,7 +58,8 @@
 
 - 相册首页：`/album/`。
 - 每个相册是 `_albums` 目录下的一个 Markdown 文件，默认访问路径为 `/album/文件名/`。
-- 在 front matter 中填写 `images` 列表；未单独设置 `cover` 时，相册首页会自动使用第一张图作为封面。
+- 可以直接在正文里写 Markdown 图片：`![说明](图片地址)`，相册详情页会自动解析为灯箱图集。
+- 也可以在 front matter 中填写 `images` 列表；未单独设置 `cover` 时，相册首页会自动使用第一张图作为封面。
 - 每张图可写成字符串，也可写成对象：`src` 原图，`thumb` 缩略图，`title` 灯箱标题，`alt` 替代文本，`avif` / `webp` 可选。
 - 相册详情页会加载 `_data/ashe.yml` 中 `albums.lightbox_css` 和 `albums.lightbox_js` 配置的 Lightbox2 资源。
 
@@ -69,6 +70,20 @@
 title: 2021.09.20
 date: 2021-09-20
 description: 这个相册主题的说明。
+---
+
+这里可以写相册说明。
+
+![第一张照片](https://example.com/photo-1.jpg)
+![第二张照片](/assets/images/image_1.jpg)
+```
+
+如果需要单独配置缩略图或 avif/webp，可使用 `images`：
+
+```yaml
+---
+title: 2021.09.20
+date: 2021-09-20
 images:
   - src: https://example.com/photo-1.jpg
     thumb: https://example.com/photo-1.jpg?imageMogr2/thumbnail/x400

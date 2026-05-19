@@ -17,6 +17,20 @@ body_class: page album-index
       {% if album_limit == 0 or forloop.index <= album_limit %}
       {% assign cover = album.cover | default: album.image %}
       {% assign cover_alt = album.title %}
+      {% assign album_image_count = 0 %}
+      {% if album.images and album.images.size > 0 %}
+        {% assign album_image_count = album.images.size %}
+      {% else %}
+        {% assign album_content_images = album.content | split: '<img' %}
+        {% assign album_image_count = album_content_images.size | minus: 1 %}
+        {% if album_image_count == 0 %}
+          {% assign markdown_image_parts = album.content | split: '![' %}
+          {% assign markdown_image_count = markdown_image_parts.size | minus: 1 %}
+          {% if markdown_image_count > 0 %}
+            {% assign album_image_count = markdown_image_count %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
       {% if cover == nil or cover == '' %}
         {% assign first_photo = album.images | first %}
         {% if first_photo %}
@@ -28,9 +42,28 @@ body_class: page album-index
         {% assign content_images = album.content | split: '<img' %}
         {% for image_part in content_images offset: 1 limit: 1 %}
           {% assign src_parts = image_part | split: 'src="' %}
-          {% for src_part in src_parts offset: 1 limit: 1 %}
-            {% assign cover = src_part | split: '"' | first %}
-          {% endfor %}
+          {% if src_parts.size > 1 %}
+            {% assign cover = src_parts | last | split: '"' | first %}
+          {% else %}
+            {% assign src_parts = image_part | split: "src='" %}
+            {% if src_parts.size > 1 %}
+              {% assign cover = src_parts | last | split: "'" | first %}
+            {% endif %}
+          {% endif %}
+          {% assign alt_parts = image_part | split: 'alt="' %}
+          {% if alt_parts.size > 1 %}
+            {% assign cover_alt = alt_parts | last | split: '"' | first %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if cover == nil or cover == '' %}
+        {% assign markdown_images = album.content | split: '![' %}
+        {% for image_part in markdown_images offset: 1 limit: 1 %}
+          {% assign markdown_parts = image_part | split: '](' %}
+          {% if markdown_parts.size > 1 %}
+            {% assign cover = markdown_parts | last | split: ')' | first | split: ' ' | first %}
+            {% assign cover_alt = markdown_parts | first | default: album.title %}
+          {% endif %}
         {% endfor %}
       {% endif %}
       {% assign cover_url = cover %}
@@ -51,7 +84,7 @@ body_class: page album-index
           <h2 class="album-card-title"><a href="{{ album.url | relative_url }}">{{ album.title }}</a></h2>
           <div class="album-card-meta">
             {% if album.date %}<time datetime="{{ album.date | date_to_xmlschema }}">{{ album.date | date: '%Y年%-m月%-d日' }}</time>{% endif %}
-            {% if album.images and album.images.size > 0 %}<span>{{ album.images.size }} 张照片</span>{% endif %}
+            {% if album_image_count > 0 %}<span>{{ album_image_count }} 张照片</span>{% endif %}
           </div>
           {% if album.description %}
           <p class="album-card-excerpt">{{ album.description }}</p>
