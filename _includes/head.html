@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="{{ '/assets/css/fontello.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/slick.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/perfect-scrollbar.css' | relative_url }}">
+  {% if page.layout == 'album' %}
+  <link rel="stylesheet" href="{{ ashe.albums.lightbox_css }}">
+  {% endif %}
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/responsive.css' | relative_url }}">
   {% if page.rtl %}

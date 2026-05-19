@@ -54,6 +54,32 @@
 
 顶部栏不会默认显示社交图标；如确实需要，可把 `_data/ashe.yml` 中的 `top_bar.show_socials` 改为 `true`。
 
+## 相册
+
+- 相册首页：`/album/`。
+- 每个相册是 `_albums` 目录下的一个 Markdown 文件，默认访问路径为 `/album/文件名/`。
+- 在 front matter 中填写 `images` 列表；未单独设置 `cover` 时，相册首页会自动使用第一张图作为封面。
+- 每张图可写成字符串，也可写成对象：`src` 原图，`thumb` 缩略图，`title` 灯箱标题，`alt` 替代文本，`avif` / `webp` 可选。
+- 相册详情页会加载 `_data/ashe.yml` 中 `albums.lightbox_css` 和 `albums.lightbox_js` 配置的 Lightbox2 资源。
+
+示例：
+
+```yaml
+---
+title: 2021.09.20
+date: 2021-09-20
+description: 这个相册主题的说明。
+images:
+  - src: https://example.com/photo-1.jpg
+    thumb: https://example.com/photo-1.jpg?imageMogr2/thumbnail/x400
+    avif: https://example.com/photo-1.jpg?imageMogr2/thumbnail/x400/format/avif
+    webp: https://example.com/photo-1.jpg?imageMogr2/thumbnail/x400/format/webp
+    title: 第一张照片
+  - src: /assets/images/image_1.jpg
+    title: 本地图片
+---
+```
+
 ## 常用开关
 
 - 订阅地址：`/feed.xml`，页面 `<head>` 已输出 RSS 发现链接，社交图标里也已加入 RSS。

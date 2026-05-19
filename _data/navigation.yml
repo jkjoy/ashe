@@ -12,6 +12,8 @@ top:
 main:
   - title: 首页
     url: /
+  - title: 相册
+    url: /album/
   - title: 旅行
     url: /archive/?category=旅行
   - title: 生活
@@ -29,6 +31,8 @@ main:
 footer:
   - title: 首页
     url: /
+  - title: 相册
+    url: /album/
   - title: 关于
     url: /about/
   - title: 归档

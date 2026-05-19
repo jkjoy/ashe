@@ -1,0 +1,68 @@
+---
+layout: default
+body_class: page album-detail
+---
+{% include helpers.liquid %}
+<div class="main-content clear-fix{% if ashe.general.content_width == 'boxed' %} boxed-wrapper{% endif %}">
+  <div class="main-container has-no-sidebars">
+    <article id="album-{{ page.slug }}" class="album">
+      <header class="post-header album-header">
+        <h1 class="page-title">{{ page.title }}</h1>
+        <div class="album-meta">
+          {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%-m月%-d日' }}</time>{% endif %}
+          {% if page.images and page.images.size > 0 %}<span>{{ page.images.size }} 张照片</span>{% endif %}
+        </div>
+        {% if page.description %}<p class="album-intro">{{ page.description }}</p>{% endif %}
+      </header>
+
+      {% if content and content != '' %}
+      <div class="post-content album-content">
+        {{ content }}
+      </div>
+      {% endif %}
+
+      {% if page.images and page.images.size > 0 %}
+      <div class="gallery-container album-gallery-container">
+        {% assign lightbox_group = page.slug | default: page.title | slugify %}
+        {% for photo in page.images %}
+        {% assign photo_url = photo.src | default: photo.url | default: photo.path | default: photo %}
+        {% assign photo_thumb = photo.thumb | default: photo.thumbnail | default: photo_url %}
+        {% assign photo_avif = photo.avif | default: photo.thumb_avif %}
+        {% assign photo_webp = photo.webp | default: photo.thumb_webp %}
+        {% assign photo_title = photo.title | default: photo.caption | default: '' %}
+        {% assign photo_alt = photo.alt | default: photo_title | default: page.title %}
+        {% assign photo_url_output = photo_url %}
+        {% unless photo_url_output contains '://' %}
+          {% assign photo_url_output = photo_url_output | relative_url %}
+        {% endunless %}
+        {% assign photo_thumb_output = photo_thumb %}
+        {% unless photo_thumb_output contains '://' %}
+          {% assign photo_thumb_output = photo_thumb_output | relative_url %}
+        {% endunless %}
+        {% assign photo_avif_output = photo_avif %}
+        {% if photo_avif_output and photo_avif_output != '' %}
+          {% unless photo_avif_output contains '://' %}
+            {% assign photo_avif_output = photo_avif_output | relative_url %}
+          {% endunless %}
+        {% endif %}
+        {% assign photo_webp_output = photo_webp %}
+        {% if photo_webp_output and photo_webp_output != '' %}
+          {% unless photo_webp_output contains '://' %}
+            {% assign photo_webp_output = photo_webp_output | relative_url %}
+          {% endunless %}
+        {% endif %}
+        <div class="picture-container">
+          <a target="_blank" rel="noopener" href="{{ photo_url_output }}" data-lightbox="{{ lightbox_group }}" data-title="{{ photo_title | escape }}">
+            <picture>
+              {% if photo_avif_output and photo_avif_output != '' %}<source srcset="{{ photo_avif_output }}" type="image/avif">{% endif %}
+              {% if photo_webp_output and photo_webp_output != '' %}<source srcset="{{ photo_webp_output }}" type="image/webp">{% endif %}
+              <img src="{{ photo_thumb_output }}" alt="{{ photo_alt | escape }}" class="img-thumbnail" loading="lazy">
+            </picture>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </article>
+  </div>
+</div>

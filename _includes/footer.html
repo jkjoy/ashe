@@ -30,6 +30,18 @@
 </footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+{% if page.layout == 'album' %}
+<script src="{{ ashe.albums.lightbox_js }}" charset="utf-8"></script>
+<script>
+  if (window.lightbox) {
+    lightbox.option({
+      resizeDuration: 180,
+      wrapAround: true,
+      albumLabel: "第 %1 张，共 %2 张"
+    });
+  }
+</script>
+{% endif %}
 <script src="{{ '/assets/js/custom-plugins.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/custom-scripts.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/jekyll-ashe.js' | relative_url }}"></script>

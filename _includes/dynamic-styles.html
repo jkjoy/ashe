@@ -130,6 +130,7 @@
   .page-content h5,
   .page-content h6,
   .page-content .post-title a,
+  .page-content .album-card-title a,
   .page-content .author-description h4 a,
   .page-content .related-posts h4 a,
   .page-content .post-navigation-title,
@@ -141,6 +142,7 @@
   }
 
   .page-content .post-title a:hover,
+  .page-content .album-card-title a:hover,
   .page-content .post-navigation-link:hover .post-navigation-title,
   a:not(.header-logo-a):hover,
   #page-footer a:hover {
@@ -151,6 +153,8 @@
   .page-content .post-comments,
   .page-content .post-author,
   .page-content [data-layout*="list"] .post-author a,
+  .page-content .album-card-meta,
+  .page-content .album-meta,
   .page-content .related-post-date,
   .archive-timeline-tags,
   .page-content .comment-meta a,
@@ -185,6 +189,7 @@
   [data-layout*="list"] .blog-grid > li,
   .archive-timeline-content,
   .comments-config-notice,
+  .page-content .album-card,
   .page-content .post-navigation-text,
   .page-content .post-navigation-link,
   .page-content .author-description,
@@ -577,6 +582,7 @@
   .page-content h5,
   .page-content h6,
   .page-content .post-title a,
+  .page-content .album-card-title a,
   .page-content .author-description h4 a,
   .page-content .related-posts h4 a,
   .page-content .post-navigation-title,
@@ -636,6 +642,8 @@
   .page-content .post-comments,
   .page-content .post-author,
   .page-content [data-layout*="list"] .post-author a,
+  .page-content .album-card-meta,
+  .page-content .album-meta,
   .page-content .related-post-date,
   .archive-timeline-tags,
   .page-content .comment-meta a,
@@ -668,6 +676,7 @@
   [data-layout*="list"] .blog-grid > li,
   .archive-timeline-content,
   .comments-config-notice,
+  .page-content .album-card,
   .page-content .post-navigation-text,
   .page-content .post-navigation-link,
   .page-content .author-description,
@@ -711,6 +720,12 @@
   }
 
   body.ashe-dark-mode .post-navigation-link {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  body.ashe-dark-mode .album-card,
+  body.ashe-dark-mode .album-card-cover,
+  body.ashe-dark-mode .album-gallery-container .picture-container picture {
     background-color: rgba(255, 255, 255, 0.03);
   }
 

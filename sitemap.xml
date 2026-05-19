@@ -22,4 +22,12 @@ sitemap: false
   </url>
   {% endunless %}
   {% endfor %}
+  {% for album in site.albums %}
+  {% unless album.sitemap == false %}
+  <url>
+    <loc>{{ album.url | absolute_url | xml_escape }}</loc>
+    <lastmod>{{ album.last_modified_at | default: album.date | default: site.time | date_to_xmlschema }}</lastmod>
+  </url>
+  {% endunless %}
+  {% endfor %}
 </urlset>

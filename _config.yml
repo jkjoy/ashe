@@ -3,7 +3,7 @@ title: Ashe
 description: Ashe 博客风格的 Jekyll 中文移植版。
 lang: zh-CN
 timezone: Asia/Shanghai
-url: "https://example.com"
+url: "https://www.jkjoy.de/ashe"
 baseurl: ""
 
 # 默认作者键名，会在 _data/authors.yml 中查找对应信息。
@@ -11,6 +11,12 @@ author_default: sun
 
 # 文章永久链接结构。
 permalink: /:categories/:title/
+
+# 相册集合：_albums 下的每个 Markdown 文件会生成一个相册详情页。
+collections:
+  albums:
+    output: true
+    permalink: /album/:name/
 
 # 首页分页设置。
 paginate: 4
@@ -35,6 +41,11 @@ defaults:
     values:
       layout: post
       author: sun
+  - scope:
+      path: ""
+      type: albums
+    values:
+      layout: album
 
 # 构建时忽略的文件。
 exclude:

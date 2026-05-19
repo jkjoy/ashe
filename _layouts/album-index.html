@@ -1,0 +1,72 @@
+---
+layout: default
+body_class: page album-index
+---
+{% include helpers.liquid %}
+{% assign albums = site.albums | sort: 'date' | reverse %}
+{% assign album_limit = ashe.albums.index_limit | default: 0 | plus: 0 %}
+<div class="main-content clear-fix{% if ashe.general.content_width == 'boxed' %} boxed-wrapper{% endif %}">
+  <div class="main-container has-no-sidebars">
+    <div class="category-description album-description">
+      <h4>{{ page.title }}</h4>
+      {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+    </div>
+    {% if albums and albums.size > 0 %}
+    <div class="album-grid">
+      {% for album in albums %}
+      {% if album_limit == 0 or forloop.index <= album_limit %}
+      {% assign cover = album.cover | default: album.image %}
+      {% assign cover_alt = album.title %}
+      {% if cover == nil or cover == '' %}
+        {% assign first_photo = album.images | first %}
+        {% if first_photo %}
+          {% assign cover = first_photo.src | default: first_photo.url | default: first_photo.path | default: first_photo %}
+          {% assign cover_alt = first_photo.alt | default: first_photo.title | default: album.title %}
+        {% endif %}
+      {% endif %}
+      {% if cover == nil or cover == '' %}
+        {% assign content_images = album.content | split: '<img' %}
+        {% for image_part in content_images offset: 1 limit: 1 %}
+          {% assign src_parts = image_part | split: 'src="' %}
+          {% for src_part in src_parts offset: 1 limit: 1 %}
+            {% assign cover = src_part | split: '"' | first %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+      {% assign cover_url = cover %}
+      {% if cover_url and cover_url != '' %}
+        {% unless cover_url contains '://' %}
+          {% assign cover_url = cover_url | relative_url %}
+        {% endunless %}
+      {% endif %}
+      <article class="album-card">
+        <a class="album-card-cover" href="{{ album.url | relative_url }}" aria-label="打开相册：{{ album.title }}">
+          {% if cover_url and cover_url != '' %}
+          <img src="{{ cover_url }}" alt="{{ cover_alt | escape }}" loading="lazy">
+          {% else %}
+          <span class="album-card-placeholder"><i class="fa-regular fa-image"></i></span>
+          {% endif %}
+        </a>
+        <div class="album-card-body">
+          <h2 class="album-card-title"><a href="{{ album.url | relative_url }}">{{ album.title }}</a></h2>
+          <div class="album-card-meta">
+            {% if album.date %}<time datetime="{{ album.date | date_to_xmlschema }}">{{ album.date | date: '%Y年%-m月%-d日' }}</time>{% endif %}
+            {% if album.images and album.images.size > 0 %}<span>{{ album.images.size }} 张照片</span>{% endif %}
+          </div>
+          {% if album.description %}
+          <p class="album-card-excerpt">{{ album.description }}</p>
+          {% else %}
+          <p class="album-card-excerpt">{{ album.excerpt | strip_html | strip_newlines | truncate: 90 }}</p>
+          {% endif %}
+        </div>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="album-empty">
+      <p>还没有相册。</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
